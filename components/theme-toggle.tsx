@@ -7,10 +7,39 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Wait until mounted on client to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const toggleTheme = async () => {
+    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
+
+    if (
+      !document.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    await transition.ready;
+
+    // Simple horizontal wipe with spring overshoot
+    document.documentElement.animate(
+      {
+        clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
+      },
+      {
+        duration: 400,
+        easing: "ease-in-out",
+        pseudoElement: "::view-transition-new(root)",
+      },
+    );
+  };
 
   if (!mounted) {
     return (
@@ -25,7 +54,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      onClick={toggleTheme}
       aria-label="Toggle Theme"
       className="[&_svg]:size-4.5 items-start cursor-pointer rounded-md p-1 [&_svg]:text-foreground"
     >

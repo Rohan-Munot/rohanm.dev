@@ -159,8 +159,8 @@ const GitHubGraph = () => {
                 {week.map((day, dayIndex) => (
                   <motion.div
                     key={day.date}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{
                       duration: 0.2,
                       delay: weekIndex * 0.01 + dayIndex * 0.005,
@@ -185,8 +185,8 @@ const GitHubGraph = () => {
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           className={cn(
-            "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border rounded shadow-lg pointer-events-none whitespace-nowrap",
-            "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)]",
+            "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
+            "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
             "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
           )}
           style={{

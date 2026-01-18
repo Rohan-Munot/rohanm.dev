@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Portfolio Website",
+    "description": "Personal portfolio built with Next.js and Tailwind CSS featuring a GitHub contributions graph, experience timeline, and smooth animations.",
+    "url": "https://rohanm.dev",
+    "github": "https://github.com/rohan/portfolio",
+    "tools": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "featured": true
+  },
+  {
+    "id": "2",
+    "name": "Task Management App",
+    "description": "A full-stack task management application with real-time updates, team collaboration, and drag-and-drop kanban boards.",
+    "url": "https://taskapp.demo",
+    "github": "https://github.com/rohan/taskapp",
+    "tools": ["React", "Node.js", "PostgreSQL", "Socket.io"],
+    "featured": true
+  },
+  {
+    "id": "3",
+    "name": "E-commerce Dashboard",
+    "description": "Admin dashboard for e-commerce platforms with analytics, inventory management, and order tracking capabilities.",
+    "url": null,
+    "github": "https://github.com/rohan/ecommerce-dashboard",
+    "tools": ["React", "GraphQL", "Chart.js", "Tailwind CSS"],
+    "featured": false
+  },
+  {
+    "id": "4",
+    "name": "CLI Tool",
+    "description": "A command-line tool for automating repetitive development tasks and project scaffolding.",
+    "url": null,
+    "github": "https://github.com/rohan/cli-tool",
+    "tools": ["Node.js", "TypeScript", "Commander.js"],
+    "featured": false
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "React",
+    "url": "https://react.dev",
+    "icon": "FileCodeIcon"
+  },
+  {
+    "id": "2",
+    "name": "TypeScript",
+    "url": "https://www.typescriptlang.org",
+    "icon": "CodeIcon"
+  },
+  {
+    "id": "3",
+    "name": "Next.js",
+    "url": "https://nextjs.org",
+    "icon": "PlanetIcon"
+  },
+  {
+    "id": "4",
+    "name": "Tailwind CSS",
+    "url": "https://tailwindcss.com",
+    "icon": "PaintBrushBroadIcon"
+  },
+  {
+    "id": "5",
+    "name": "GraphQL",
+    "url": "https://graphql.org",
+    "icon": "ShareNetworkIcon"
+  },
+  {
+    "id": "6",
+    "name": "Node.js",
+    "url": "https://nodejs.org",
+    "icon": "TerminalIcon"
+  },
+  {
+    "id": "7",
+    "name": "PostgreSQL",
+    "url": "https://www.postgresql.org",
+    "icon": "DatabaseIcon"
+  },
+  {
+    "id": "8",
+    "name": "Docker",
+    "url": "https://www.docker.com",
+    "icon": "CubeIcon"
+  },
+  {
+    "id": "9",
+    "name": "Git",
+    "url": "https://git-scm.com",
+    "icon": "GitBranchIcon"
+  },
+  {
+    "id": "10",
+    "name": "VS Code",
+    "url": "https://code.visualstudio.com",
+    "icon": "CodeIcon"
+  },
+  {
+    "id": "11",
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "icon": "FigmaLogoIcon"
+  },
+  {
+    "id": "12",
+    "name": "Jest",
+    "url": "https://jestjs.io",
+    "icon": "FlaskIcon"
+  }
+]
