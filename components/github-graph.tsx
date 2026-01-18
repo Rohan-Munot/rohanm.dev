@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
+import SnakeGame from "./snake-game";
+import { CursorClickIcon } from "@phosphor-icons/react/ssr";
+
 interface ContributionDay {
   date: string;
   count: number;
@@ -43,6 +46,22 @@ const GitHubGraph = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+  const [showGame, setShowGame] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check for mobile/touch device
+    const checkMobile = () => {
+      setIsMobile(
+        window.matchMedia("(max-width: 768px)").matches ||
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0,
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const fetchContributions = async () => {
@@ -134,93 +153,159 @@ const GitHubGraph = () => {
 
   const monthLabels = getMonthLabels();
 
+  // Calculate grid dimensions for snake game (matches contribution grid)
+  const cols = weeks.length;
+  const rows = 7;
+
   return (
     <div className="github-graph relative w-full">
-      <div className="overflow-x-auto py-1">
-        <div className="min-w-[700px]">
-          {/* Month labels */}
-          <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">
-            {weeks.map((_, weekIndex) => {
-              const monthLabel = monthLabels.find(
-                (m) => m.weekIndex === weekIndex,
-              );
-              return (
-                <div key={weekIndex} className="text-xs text-muted-foreground">
-                  {monthLabel ? monthLabel.month : ""}
+      <AnimatePresence mode="wait">
+        {showGame ? (
+          <motion.div
+            key="game"
+            initial={{ opacity: 0, filter: "blur(4px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(4px)" }}
+            transition={{ duration: 0.2 }}
+          >
+            <SnakeGame
+              rows={rows}
+              cols={cols}
+              onClose={() => setShowGame(false)}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="graph"
+            initial={{ opacity: 0, filter: "blur(4px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(4px)" }}
+            transition={{ duration: 0.2 }}
+            onClick={isMobile ? undefined : () => setShowGame(true)}
+            className={cn("group relative", !isMobile && "cursor-pointer")}
+            role={isMobile ? undefined : "button"}
+            tabIndex={isMobile ? undefined : 0}
+            onKeyDown={
+              isMobile
+                ? undefined
+                : (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setShowGame(true);
+                    }
+                  }
+            }
+          >
+            <div className="overflow-x-auto py-1">
+              <div className="min-w-[700px]">
+                {/* Month labels */}
+                <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">
+                  {weeks.map((_, weekIndex) => {
+                    const monthLabel = monthLabels.find(
+                      (m) => m.weekIndex === weekIndex,
+                    );
+                    return (
+                      <div
+                        key={weekIndex}
+                        className="text-xs text-muted-foreground"
+                      >
+                        {monthLabel ? monthLabel.month : ""}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Contribution grid */}
-          <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
-            {weeks.map((week, weekIndex) => (
-              <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
-                {week.map((day, dayIndex) => (
-                  <motion.div
-                    key={day.date}
-                    initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{
-                      duration: 0.2,
-                      delay: weekIndex * 0.01 + dayIndex * 0.005,
-                    }}
-                    className={cn(
-                      "aspect-square rounded-[2px] cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
-                      getContributionClass(getContributionLevel(day.count)),
-                    )}
-                    onMouseEnter={(e) => handleMouseEnter(e, day)}
-                    onMouseLeave={handleMouseLeave}
-                  />
-                ))}
+                {/* Contribution grid */}
+                <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
+                  {weeks.map((week, weekIndex) => (
+                    <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
+                      {week.map((day, dayIndex) => (
+                        <motion.div
+                          key={day.date}
+                          initial={{
+                            opacity: 0,
+                            scale: 0.25,
+                            filter: "blur(4px)",
+                          }}
+                          animate={{
+                            opacity: 1,
+                            scale: 1,
+                            filter: "blur(0px)",
+                          }}
+                          transition={{
+                            duration: 0.2,
+                            delay: weekIndex * 0.01 + dayIndex * 0.005,
+                          }}
+                          className={cn(
+                            "aspect-square rounded-[2px] cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
+                            getContributionClass(
+                              getContributionLevel(day.count),
+                            ),
+                          )}
+                          onMouseEnter={(e) => handleMouseEnter(e, day)}
+                          onMouseLeave={handleMouseLeave}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
 
-      {/* Tooltip */}
-      {tooltip && (
-        <motion.div
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={cn(
-            "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
-            "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
-            "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
-          )}
-          style={{
-            left: tooltip.x,
-            top: tooltip.y,
-            transform: "translate(-50%, -100%)",
-          }}
-        >
-          <span className="font-medium">
-            {tooltip.count} contribution{tooltip.count !== 1 ? "s" : ""}
-          </span>
-          <span className="text-muted-foreground">
-            {" "}
-            on {formatDate(tooltip.date)}
-          </span>
-        </motion.div>
-      )}
-      <div className="flex items-center justify-between mt-2">
-        <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
-          {data.total} activities last year
-        </span>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground">Less</span>
-          <div className="flex gap-[3px]">
-            {[0, 1, 2, 4].map((level) => (
-              <div
-                key={level}
-                className={`size-2.5 rounded-[2px] ${getContributionClass(level)}`}
-              />
-            ))}
-          </div>
-          <span className="text-xs text-muted-foreground">More</span>
-        </div>
-      </div>
+            {/* Tooltip */}
+            {tooltip && (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={cn(
+                  "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
+                  "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
+                  "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
+                )}
+                style={{
+                  left: tooltip.x,
+                  top: tooltip.y,
+                  transform: "translate(-50%, -100%)",
+                }}
+              >
+                <span className="font-medium">
+                  {tooltip.count} contribution{tooltip.count !== 1 ? "s" : ""}
+                </span>
+                <span className="text-muted-foreground">
+                  {" "}
+                  on {formatDate(tooltip.date)}
+                </span>
+              </motion.div>
+            )}
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
+                {data.total} activities last year
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">Less</span>
+                <div className="flex gap-[3px]">
+                  {[0, 1, 2, 4].map((level) => (
+                    <div
+                      key={level}
+                      className={`size-2.5 rounded-[2px] ${getContributionClass(level)}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-muted-foreground">More</span>
+              </div>
+            </div>
+
+            {/* Click me hint - hidden on mobile */}
+            {!isMobile && (
+              <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5">
+                <span className="text-xs text-muted-foreground font-medium tracking-wide">
+                  click
+                </span>
+                <CursorClickIcon className="size-3.5" />
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Socials from "@/components/socials";
 import GitHubGraph from "@/components/github-graph";
 import Experience from "@/components/experience";
 import Marquee from "@/components/marquee";
@@ -15,6 +16,15 @@ const Page = () => {
         <div className="p-4 dashed-border-x">
           <div className="flex flex-col gap-2">
             <span className="text-xs font-medium text-muted-foreground">
+              Socials
+            </span>
+            <Socials />
+            <GitHubGraph />
+          </div>
+        </div>
+        <div className="p-4 dashed-border-x">
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-medium text-muted-foreground">
               Tools
             </span>
             <Marquee data={toolsData} />
@@ -28,9 +38,7 @@ const Page = () => {
             <Experience data={experienceData} />
           </div>
         </div>
-        <div className="p-4 dashed-border-x">
-          <GitHubGraph />
-        </div>
+
         <div className="p-4 dashed-border-x mb-2 sm:mb-3">
           <div className="flex flex-col gap-2">
             <span className="text-xs font-medium text-muted-foreground">
