@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import SnakeGame from "./snake-game";
@@ -48,14 +48,18 @@ const GitHubGraph = () => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const [showGame, setShowGame] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const [tooltipWidth, setTooltipWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
     // Check for mobile/touch device
     const checkMobile = () => {
       setIsMobile(
         window.matchMedia("(max-width: 768px)").matches ||
-          "ontouchstart" in window ||
-          navigator.maxTouchPoints > 0,
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0,
       );
     };
     checkMobile();
@@ -104,6 +108,21 @@ const GitHubGraph = () => {
   const handleMouseLeave = () => {
     setTooltip(null);
   };
+
+  useLayoutEffect(() => {
+    if (!tooltip) return;
+
+    const measure = () => {
+      if (!tooltipRef.current || !containerRef.current) return;
+      const tooltipRect = tooltipRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      setTooltipWidth(tooltipRect.width);
+      setContainerWidth(containerRect.width);
+    };
+
+    const raf = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(raf);
+  }, [tooltip]);
 
   if (loading) {
     return (
@@ -157,8 +176,19 @@ const GitHubGraph = () => {
   const cols = weeks.length;
   const rows = 7;
 
+  const clampedTooltipX = (() => {
+    if (!tooltip) return 0;
+    if (!tooltipWidth || !containerWidth) return tooltip.x;
+    const padding = 8;
+    const half = tooltipWidth / 2;
+    return Math.min(
+      Math.max(tooltip.x, padding + half),
+      containerWidth - padding - half
+    );
+  })();
+
   return (
-    <div className="github-graph relative w-full">
+    <div ref={containerRef} className="github-graph relative w-full">
       <AnimatePresence mode="wait">
         {showGame ? (
           <motion.div
@@ -189,10 +219,10 @@ const GitHubGraph = () => {
               isMobile
                 ? undefined
                 : (e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      setShowGame(true);
-                    }
+                  if (e.key === "Enter" || e.key === " ") {
+                    setShowGame(true);
                   }
+                }
             }
           >
             <div className="overflow-x-auto py-1">
@@ -253,16 +283,15 @@ const GitHubGraph = () => {
 
             {/* Tooltip */}
             {tooltip && (
-              <motion.div
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
+                ref={tooltipRef}
                 className={cn(
                   "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
                   "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
                   "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
                 )}
                 style={{
-                  left: tooltip.x,
+                  left: clampedTooltipX,
                   top: tooltip.y,
                   transform: "translate(-50%, -100%)",
                 }}
@@ -274,7 +303,7 @@ const GitHubGraph = () => {
                   {" "}
                   on {formatDate(tooltip.date)}
                 </span>
-              </motion.div>
+              </div>
             )}
             <div className="flex items-center justify-between mt-2">
               <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
