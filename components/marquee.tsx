@@ -4,25 +4,28 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/badge";
+
+// Phosphor Icons
+import { CodeIcon } from "@phosphor-icons/react";
+
 import {
-  FileCodeIcon,
-  CodeIcon,
-  PlanetIcon,
-  PaintBrushBroadIcon,
-  ShareNetworkIcon,
-  TerminalIcon,
-  DatabaseIcon,
-  CubeIcon,
-  GitBranchIcon,
-  FigmaLogoIcon,
-  FlaskIcon,
-} from "@phosphor-icons/react";
+  IconBrandReact,
+  IconBrandTypescript,
+  IconBrandNextjs,
+  IconBrandTailwind,
+  IconBrandNodejs,
+  IconBrandGit,
+  IconBrandFigma,
+  IconBrandFramer,
+} from "@tabler/icons-react";
+
+import { IconExpo, IconTanstackQuery, IconZustand } from "@/components/icons";
 
 interface Tool {
   id: string;
   name: string;
   url: string;
-  icon: string;
+  icon?: string;
 }
 
 interface MarqueeProps {
@@ -31,28 +34,34 @@ interface MarqueeProps {
 }
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  FileCodeIcon,
-  CodeIcon,
-  PlanetIcon,
-  PaintBrushBroadIcon,
-  ShareNetworkIcon,
-  TerminalIcon,
-  DatabaseIcon,
-  CubeIcon,
-  GitBranchIcon,
-  FigmaLogoIcon,
-  FlaskIcon,
+  BrandReact: IconBrandReact,
+  BrandTypescript: IconBrandTypescript,
+  BrandNextjs: IconBrandNextjs,
+  BrandTailwind: IconBrandTailwind,
+  BrandNodejs: IconBrandNodejs,
+  BrandGit: IconBrandGit,
+  BrandFigma: IconBrandFigma,
+  BrandFramer: IconBrandFramer,
+  Expo: IconExpo,
+  TanstackQuery: IconTanstackQuery,
+  Zustand: IconZustand,
 };
 
 const ToolBadge = ({ tool }: { tool: Tool }) => {
-  const Icon = iconMap[tool.icon] || CodeIcon;
+  const Icon = tool.icon ? iconMap[tool.icon] : null;
 
   return (
     <Badge
-      render={<Link href={tool.url} target="_blank" rel="noopener noreferrer" />}
+      render={
+        <Link href={tool.url} target="_blank" rel="noopener noreferrer" />
+      }
       className="cursor-pointer hover:bg-muted transition-colors duration-200"
     >
-      <Icon />
+      {Icon ? (
+        <Icon className="w-4 h-4 opacity-70" />
+      ) : (
+        <CodeIcon className="w-4 h-4 opacity-70" />
+      )}
       {tool.name}
     </Badge>
   );

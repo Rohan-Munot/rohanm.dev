@@ -3,72 +3,66 @@
     "id": "1",
     "name": "React",
     "url": "https://react.dev",
-    "icon": "FileCodeIcon"
+    "icon": "BrandReact"
   },
   {
     "id": "2",
     "name": "TypeScript",
     "url": "https://www.typescriptlang.org",
-    "icon": "CodeIcon"
+    "icon": "BrandTypescript"
   },
   {
     "id": "3",
     "name": "Next.js",
     "url": "https://nextjs.org",
-    "icon": "PlanetIcon"
+    "icon": "BrandNextjs"
   },
   {
     "id": "4",
     "name": "Tailwind CSS",
     "url": "https://tailwindcss.com",
-    "icon": "PaintBrushBroadIcon"
+    "icon": "BrandTailwind"
   },
   {
     "id": "5",
-    "name": "GraphQL",
-    "url": "https://graphql.org",
-    "icon": "ShareNetworkIcon"
+    "name": "Node.js",
+    "url": "https://nodejs.org",
+    "icon": "BrandNodejs"
   },
   {
     "id": "6",
-    "name": "Node.js",
-    "url": "https://nodejs.org",
-    "icon": "TerminalIcon"
+    "name": "Git",
+    "url": "https://git-scm.com",
+    "icon": "BrandGit"
   },
   {
     "id": "7",
-    "name": "PostgreSQL",
-    "url": "https://www.postgresql.org",
-    "icon": "DatabaseIcon"
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "icon": "BrandFigma"
   },
   {
     "id": "8",
-    "name": "Docker",
-    "url": "https://www.docker.com",
-    "icon": "CubeIcon"
+    "name": "Motion",
+    "url": "https://motion.dev",
+    "icon": "BrandFramer"
   },
   {
     "id": "9",
-    "name": "Git",
-    "url": "https://git-scm.com",
-    "icon": "GitBranchIcon"
+    "name": "Expo",
+    "url": "https://expo.dev",
+    "icon": "Expo"
   },
   {
     "id": "10",
-    "name": "VS Code",
-    "url": "https://code.visualstudio.com",
-    "icon": "CodeIcon"
+    "name": "Tanstack Query",
+    "url": "https://tanstack.com/query/latest",
+    "icon": "TanstackQuery"
   },
   {
     "id": "11",
-    "name": "Figma",
-    "url": "https://www.figma.com",
-    "icon": "FigmaLogoIcon"
-  },
-  {
-    "id": "12",
-    "name": "Jest",
-    "url": "https://jestjs.io",
-    "icon": "FlaskIcon"
+    "name": "Zustand",
+    "url": "https://zustand.docs.pmnd.rs/getting-started/introduction",
+    "icon": "Zustand"
   }
 ]
