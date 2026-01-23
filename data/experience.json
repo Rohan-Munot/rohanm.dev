@@ -1,29 +1,22 @@
 [
   {
     "id": "1",
-    "company": "Acme Corp",
-    "role": "Senior Frontend Developer",
-    "description": "Led the development of customer-facing web applications, improving performance by 40%. Collaborated with design and backend teams to deliver seamless user experiences.",
-    "startDate": "2024-06",
+    "company": "BrandContext",
+    "role": "Frontend Developer Intern",
+    "description": "Built a performance-focused analytics dashboard using Next.js, optimizing the rendering of large datasets. Integrated AI capabilities (Voice, Text) via WebSockets/REST APIs and enhanced interactivity using Framer Motion.",
+    "startDate": "2025-04",
     "endDate": null,
-    "tools": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"]
+    "tools": ["Next.js", "TypeScript", "WebSockets", "Framer Motion", "REST APIs"],
+    "url": "https://brandcontext.ai"
   },
   {
     "id": "2",
-    "company": "TechStart Inc",
-    "role": "Frontend Developer",
-    "description": "Built and maintained multiple client projects using modern web technologies. Implemented responsive designs and optimized application bundle sizes.",
-    "startDate": "2022-03",
-    "endDate": "2024-05",
-    "tools": ["React", "JavaScript", "Redux", "SCSS", "REST APIs"]
-  },
-  {
-    "id": "3",
-    "company": "Digital Agency",
-    "role": "Junior Developer",
-    "description": "Developed interactive websites and landing pages for various clients. Gained experience with version control and agile development practices.",
-    "startDate": "2021-01",
-    "endDate": "2022-02",
-    "tools": ["HTML", "CSS", "JavaScript", "jQuery", "WordPress"]
+    "company": "Novillex",
+    "role": "Software Developer Intern",
+    "description": "Developed scalable, modular UI components for critical banking workflows using React and TypeScript. Engineered robust data integration layers and enforced strict type safety to reduce runtime errors.",
+    "startDate": "2025-06",
+    "endDate": "2025-11",
+    "tools": ["React", "TypeScript", "REST APIs"],
+    "url": null
   }
 ]

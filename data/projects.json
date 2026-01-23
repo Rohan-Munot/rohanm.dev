@@ -1,38 +1,20 @@
 [
   {
     "id": "1",
-    "name": "Portfolio Website",
-    "description": "Personal portfolio built with Next.js and Tailwind CSS featuring a GitHub contributions graph, experience timeline, and smooth animations.",
-    "url": "https://rohanm.dev",
-    "github": "https://github.com/rohan/portfolio",
-    "tools": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "name": "Inset UI",
+    "description": "A modular component library compatible with Shadcn resgistry, built using Base UI and Tailwind CSS.",
+    "url": "https://ui.rohanm.dev/",
+    "github": null,
+    "tools": ["Base UI", "Tailwind CSS"],
     "featured": true
   },
   {
     "id": "2",
-    "name": "Task Management App",
-    "description": "A full-stack task management application with real-time updates, team collaboration, and drag-and-drop kanban boards.",
-    "url": "https://taskapp.demo",
-    "github": "https://github.com/rohan/taskapp",
-    "tools": ["React", "Node.js", "PostgreSQL", "Socket.io"],
+    "name": "Arthatan",
+    "description": "A high-performance marketing landing page for a company built using Next.js (SSR). Achieved perfect Core Web Vitals scores for SEO and implemented automated lead capture pipelines.",
+    "url": "https://arthatan.vercel.app",
+    "github": null,
+    "tools": ["Next.js", "SSR", "CRM Integration"],
     "featured": true
-  },
-  {
-    "id": "3",
-    "name": "E-commerce Dashboard",
-    "description": "Admin dashboard for e-commerce platforms with analytics, inventory management, and order tracking capabilities.",
-    "url": null,
-    "github": "https://github.com/rohan/ecommerce-dashboard",
-    "tools": ["React", "GraphQL", "Chart.js", "Tailwind CSS"],
-    "featured": false
-  },
-  {
-    "id": "4",
-    "name": "CLI Tool",
-    "description": "A command-line tool for automating repetitive development tasks and project scaffolding.",
-    "url": null,
-    "github": "https://github.com/rohan/cli-tool",
-    "tools": ["Node.js", "TypeScript", "Commander.js"],
-    "featured": false
   }
 ]

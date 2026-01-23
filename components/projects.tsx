@@ -11,7 +11,6 @@ interface Project {
   url: string | null;
   github: string | null;
   tools: string[];
-  featured: boolean;
 }
 
 interface ProjectsProps {
@@ -34,9 +33,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <h3 className="font-medium text-foreground group-hover:text-foreground/90 transition-colors">
             {project.name}
           </h3>
-          {project.featured && (
-            <span className="text-xs text-muted-foreground">Featured</span>
-          )}
         </div>
 
         {/* Links */}

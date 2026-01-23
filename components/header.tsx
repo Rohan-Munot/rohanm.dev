@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex flex-col gap-1.5 ">
           <span className="text-xs font-medium leading-1 text-muted-foreground">
             {/*Hi I&apos;m*/}
-            Heyo, I&apos;m
+            Hola!, I&apos;m
           </span>
           <span className="text-2xl font-medium leading-9 font-mono">
             Rohan Munot

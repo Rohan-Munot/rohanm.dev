@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Badge } from "./badge";
+import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 
 interface ExperienceItem {
   id: string;
@@ -11,6 +12,7 @@ interface ExperienceItem {
   startDate: string;
   endDate: string | null;
   tools: string[];
+  url: string | null;
 }
 
 interface ExperienceProps {
@@ -53,9 +55,20 @@ const Experience = ({ data, className }: ExperienceProps) => {
                   {item.endDate ? formatDate(item.endDate) : "Present"}
                 </span>
               </div>
-              <span className="text-sm text-muted-foreground">
-                {item.company}
-              </span>
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <span>{item.company}</span>
+                {item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label={`Visit ${item.company}`}
+                  >
+                    <ArrowSquareOutIcon className="size-3.5" />
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* Description */}
