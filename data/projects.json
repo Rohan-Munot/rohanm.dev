@@ -11,10 +11,10 @@
   {
     "id": "2",
     "name": "Arthatan",
-    "description": "A high-performance marketing landing page for a company built using Next.js (SSR). Achieved perfect Core Web Vitals scores for SEO and implemented automated lead capture pipelines.",
+    "description": "A high-performance marketing landing page for a company built using Next.js.",
     "url": "https://arthatan.vercel.app",
     "github": null,
-    "tools": ["Next.js", "SSR", "CRM Integration"],
+    "tools": ["Next.js", "Tailwind CSS", "Shadcn UI", "Motion"],
     "featured": true
   }
 ]
