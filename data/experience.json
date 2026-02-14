@@ -1,16 +1,31 @@
 [
   {
     "id": "1",
+    "company": "Clinikally",
+    "role": "Software Engineer Intern",
+    "description": "Joined a great team at Clinikally, contributing to high-performance healthcare technology and building impactful user experiences.",
+    "startDate": "2026-02",
+    "endDate": null,
+    "url": "https://www.clinikally.com/"
+  },
+  {
+    "id": "2",
     "company": "BrandContext",
     "role": "Frontend Developer Intern",
     "description": "Built a performance-focused analytics dashboard using Next.js, optimizing the rendering of large datasets. Integrated AI capabilities (Voice, Text) via WebSockets/REST APIs and enhanced interactivity using Framer Motion.",
     "startDate": "2025-04",
-    "endDate": null,
-    "tools": ["Next.js", "TypeScript", "WebSockets", "Framer Motion", "REST APIs"],
+    "endDate": "2026-02",
+    "tools": [
+      "Next.js",
+      "TypeScript",
+      "WebSockets",
+      "Framer Motion",
+      "REST APIs"
+    ],
     "url": "https://brandcontext.ai"
   },
   {
-    "id": "2",
+    "id": "3",
     "company": "Novillex",
     "role": "Software Developer Intern",
     "description": "Developed scalable, modular UI components for critical banking workflows using React and TypeScript. Engineered robust data integration layers and enforced strict type safety to reduce runtime errors.",

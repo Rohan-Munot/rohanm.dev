@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Badge } from "./badge";
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
+import Link from "next/link";
 
 interface ExperienceItem {
   id: string;
@@ -55,20 +56,22 @@ const Experience = ({ data, className }: ExperienceProps) => {
                   {item.endDate ? formatDate(item.endDate) : "Present"}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <span>{item.company}</span>
-                {item.url && (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-foreground transition-colors"
-                    aria-label={`Visit ${item.company}`}
-                  >
-                    <ArrowSquareOutIcon className="size-3.5" />
-                  </a>
-                )}
-              </div>
+              {item.url ? (
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-max"
+                  aria-label={`Visit ${item.company}`}
+                >
+                  <span>{item.company}</span>
+                  <ArrowSquareOutIcon className="size-3.5" />
+                </Link>
+              ) : (
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <span>{item.company}</span>
+                </div>
+              )}
             </div>
 
             {/* Description */}
@@ -77,11 +80,13 @@ const Experience = ({ data, className }: ExperienceProps) => {
             </p>
 
             {/* Tools */}
-            <div className="flex flex-wrap gap-1.5 mt-1">
-              {item.tools.map((tool) => (
-                <Badge key={tool}>{tool}</Badge>
-              ))}
-            </div>
+            {item.tools && (
+              <div className="flex flex-wrap gap-1.5 mt-1">
+                {item.tools.map((tool) => (
+                  <Badge key={tool}>{tool}</Badge>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       ))}
