@@ -12,7 +12,7 @@ interface ExperienceItem {
   description: string;
   startDate: string;
   endDate: string | null;
-  tools: string[];
+  tools?: string[];
   url: string | null;
 }
 
