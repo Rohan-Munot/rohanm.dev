@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
 import FlippingText from "./flipping-text";
-import LocalTimeChip from "./local-time-chip";
+import LocalTimeChip from "./time-chip";
 
 const Header = () => {
   return (

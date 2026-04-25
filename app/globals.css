@@ -191,6 +191,23 @@ body {
 }
 
 @layer utilities {
+    .custom-dotted-underline {
+        --dot-color: currentColor;
+        --dot-size: 1px;
+        --dot-gap: 5px;
+        --underline-offset: 2px;
+        text-decoration: none;
+        background-image: radial-gradient(
+            circle,
+            var(--dot-color) var(--dot-size),
+            transparent calc(var(--dot-size) + 0.1px)
+        );
+        background-position: 0 calc(100% - var(--underline-offset));
+        background-size: calc(var(--dot-size) + var(--dot-gap)) 1px;
+        background-repeat: repeat-x;
+        padding-bottom: calc(var(--underline-offset) + 1px);
+    }
+
     .dashed-border-y {
         background-image:
             repeating-linear-gradient(
