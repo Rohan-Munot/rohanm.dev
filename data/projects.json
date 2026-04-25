@@ -1,5 +1,23 @@
 [
   {
+    "id": "3",
+    "name": "Metro Route Finder",
+    "description": "A simple, self-built website to explore Delhi Metro routes, created to make finding the right routes quicker and more intuitive than existing options.",
+    "url": "https://metro.rohanm.dev/",
+    "github": "https://github.com/Rohan-Munot/metro",
+    "tools": ["Next.js", "TypeScript", "Tailwind CSS"],
+    "featured": true
+  },
+  {
+    "id": "4",
+    "name": "Sigen",
+    "description": "A custom Figma plugin that converts icons into clean React and React Native components, making the design-to-code workflow faster and smoother.",
+    "url": null,
+    "github": "https://github.com/Rohan-Munot/sigen",
+    "tools": ["TypeScript", "Tailwind CSS"],
+    "featured": true
+  },
+  {
     "id": "1",
     "name": "Inset UI",
     "description": "A modular component library compatible with Shadcn resgistry, built using Base UI and Tailwind CSS.",
@@ -15,6 +33,6 @@
     "url": "https://arthatan.vercel.app",
     "github": null,
     "tools": ["Next.js", "Tailwind CSS", "Shadcn UI", "Motion"],
-    "featured": true
+    "featured": false
   }
 ]
