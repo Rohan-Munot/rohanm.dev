@@ -61,6 +61,11 @@
     --shadow-2xl: 0px 40px 90px -42px hsl(30 8% 12% / 0.26);
     --tracking-normal: 0em;
     --spacing: 0.25rem;
+    --github-0: #ebedf0;
+    --github-1: #9be9a8;
+    --github-2: #40c463;
+    --github-3: #30a14e;
+    --github-4: #216e39;
 }
 
 .dark {
@@ -122,6 +127,11 @@
         0px 8px 16px 0px hsl(30 10% 4% / 0.3),
         0px 34px 72px -36px hsl(30 10% 4% / 0.58);
     --shadow-2xl: 0px 40px 90px -42px hsl(30 10% 4% / 0.66);
+    --github-0: #161b22;
+    --github-1: #0e4429;
+    --github-2: #006d32;
+    --github-3: #26a641;
+    --github-4: #39d353;
 }
 
 @theme inline {

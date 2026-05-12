@@ -1,6 +1,6 @@
 [
   {
-    "id": "3",
+    "id": "metro-route-finder",
     "name": "Metro Route Finder",
     "description": "A simple, self-built website to explore Delhi Metro routes, created to make finding the right routes quicker and more intuitive than existing options.",
     "url": "https://metro.rohanm.dev/",
@@ -9,7 +9,7 @@
     "featured": true
   },
   {
-    "id": "4",
+    "id": "sigen",
     "name": "Sigen",
     "description": "A custom Figma plugin that converts icons into clean React and React Native components, making the design-to-code workflow faster and smoother.",
     "url": null,
@@ -18,7 +18,7 @@
     "featured": true
   },
   {
-    "id": "1",
+    "id": "inset-ui",
     "name": "Inset UI",
     "description": "A modular component library compatible with Shadcn resgistry, built using Base UI and Tailwind CSS.",
     "url": "https://ui.rohanm.dev/",
@@ -27,7 +27,7 @@
     "featured": true
   },
   {
-    "id": "2",
+    "id": "arthatan",
     "name": "Arthatan",
     "description": "A high-performance marketing landing page for a company built using Next.js.",
     "url": "https://arthatan.vercel.app",

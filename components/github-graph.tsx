@@ -340,11 +340,11 @@ const GitHubGraph = () => {
 };
 
 const CONTRIBUTION_CLASSES: Record<number, string> = {
-  0: "bg-muted",
-  1: "bg-foreground/30",
-  2: "bg-foreground/50",
-  3: "bg-foreground/70",
-  4: "bg-foreground/90",
+  0: "bg-[var(--github-0)]",
+  1: "bg-[var(--github-1)]",
+  2: "bg-[var(--github-2)]",
+  3: "bg-[var(--github-3)]",
+  4: "bg-[var(--github-4)]",
 };
 
 const getContributionClass = (level: number): string => {

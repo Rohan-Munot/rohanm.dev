@@ -20,17 +20,17 @@ interface ProjectsProps {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div
-      className={cn(
-        "group relative flex flex-col gap-3 p-4 rounded-lg",
-        "border border-border/50 bg-muted/30",
-        "hover:border-border hover:bg-muted/50 transition-all duration-200",
-      )}
-    >
+    <div className="group relative flex flex-col gap-3 p-4 bg-muted/30 border border-border/30 transition-all duration-300">
+      {/* Corner brackets */}
+      <span className="absolute -top-px -left-px size-3 border-t border-l border-transparent group-hover:border-foreground/50 transition-colors duration-300" />
+      <span className="absolute -top-px -right-px size-3 border-t border-r border-transparent group-hover:border-foreground/50 transition-colors duration-300" />
+      <span className="absolute -bottom-px -left-px size-3 border-b border-l border-transparent group-hover:border-foreground/50 transition-colors duration-300" />
+      <span className="absolute -bottom-px -right-px size-3 border-b border-r border-transparent group-hover:border-foreground/50 transition-colors duration-300" />
+
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-col gap-1">
-          <h3 className="font-medium text-foreground group-hover:text-foreground/90 transition-colors">
+          <h3 className="font-medium text-foreground">
             {project.name}
           </h3>
         </div>

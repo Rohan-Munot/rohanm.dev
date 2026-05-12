@@ -1,66 +1,66 @@
 [
   {
-    "id": "1",
+    "id": "react",
     "name": "React",
     "url": "https://react.dev",
     "icon": "BrandReact"
   },
   {
-    "id": "2",
+    "id": "typescript",
     "name": "TypeScript",
     "url": "https://www.typescriptlang.org",
     "icon": "BrandTypescript"
   },
   {
-    "id": "3",
+    "id": "nextjs",
     "name": "Next.js",
     "url": "https://nextjs.org",
     "icon": "BrandNextjs"
   },
   {
-    "id": "4",
+    "id": "tailwind-css",
     "name": "Tailwind CSS",
     "url": "https://tailwindcss.com",
     "icon": "BrandTailwind"
   },
   {
-    "id": "5",
+    "id": "node-js",
     "name": "Node.js",
     "url": "https://nodejs.org",
     "icon": "BrandNodejs"
   },
   {
-    "id": "6",
+    "id": "git",
     "name": "Git",
     "url": "https://git-scm.com",
     "icon": "BrandGit"
   },
   {
-    "id": "7",
+    "id": "figma",
     "name": "Figma",
     "url": "https://www.figma.com",
     "icon": "BrandFigma"
   },
   {
-    "id": "8",
+    "id": "motion",
     "name": "Motion",
     "url": "https://motion.dev",
     "icon": "BrandFramer"
   },
   {
-    "id": "9",
+    "id": "expo",
     "name": "Expo",
     "url": "https://expo.dev",
     "icon": "Expo"
   },
   {
-    "id": "10",
+    "id": "tanstack-query",
     "name": "Tanstack Query",
     "url": "https://tanstack.com/query/latest",
     "icon": "TanstackQuery"
   },
   {
-    "id": "11",
+    "id": "zustand",
     "name": "Zustand",
     "url": "https://zustand.docs.pmnd.rs/getting-started/introduction",
     "icon": "Zustand"

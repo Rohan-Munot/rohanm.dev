@@ -2,14 +2,14 @@
 
 import { cn } from "@/lib/utils";
 import { Badge } from "./badge";
-import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import Link from "next/link";
+import { ArrowBendDoubleUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 interface ExperienceItem {
   id: string;
   company: string;
   role: string;
-  description: string;
+  description: string[];
   startDate: string;
   endDate: string | null;
   tools?: string[];
@@ -29,7 +29,7 @@ const formatDate = (dateString: string): string => {
 
 const Experience = ({ data, className }: ExperienceProps) => {
   return (
-    <div className={cn("flex flex-col", className)}>
+    <div className={cn("group relative flex flex-col max-h-[450px] overflow-hidden", className)}>
       {data.map((item, index) => (
         <div
           key={item.id}
@@ -50,34 +50,37 @@ const Experience = ({ data, className }: ExperienceProps) => {
             {/* Header */}
             <div className="flex flex-col gap-0.5">
               <div className="flex items-center justify-between gap-2 flex-wrap">
-                <h3 className="font-medium text-foreground">{item.role}</h3>
+                <h3 className="font-medium text-foreground">
+                  {item.url ? (
+                    <Link
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 custom-dotted-underline"
+                      aria-label={`Visit ${item.company}`}
+                    >
+                      {item.company}
+                    </Link>
+                  ) : (
+                    item.company
+                  )}
+                </h3>
                 <span className="text-xs text-muted-foreground">
                   {formatDate(item.startDate)} —{" "}
                   {item.endDate ? formatDate(item.endDate) : "Present"}
                 </span>
               </div>
-              {item.url ? (
-                <Link
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-max"
-                  aria-label={`Visit ${item.company}`}
-                >
-                  <span>{item.company}</span>
-                  <ArrowSquareOutIcon className="size-3.5" />
-                </Link>
-              ) : (
-                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <span>{item.company}</span>
-                </div>
-              )}
+              <span className="text-sm text-muted-foreground">{item.role}</span>
             </div>
 
             {/* Description */}
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {item.description}
-            </p>
+            {item.description && item.description.length > 0 && (
+              <ul className="text-sm text-muted-foreground leading-relaxed list-disc pl-4 space-y-1">
+                {item.description.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+            )}
 
             {/* Tools */}
             {item.tools && (
@@ -90,6 +93,18 @@ const Experience = ({ data, className }: ExperienceProps) => {
           </div>
         </div>
       ))}
+
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-background via-background/90 to-transparent z-10 flex items-end justify-center pb-2 pointer-events-none">
+        <Link
+          href="/work"
+          className="backdrop-blur-3xl border border-border p-1.5 px-2 bg-muted rounded-sm flex items-center justify-center  duration-200 gap-1.5 pointer-events-auto"
+        >
+          <span className="text-xs text-foreground font-medium tracking-wide">
+            All
+          </span>
+          <ArrowBendDoubleUpRightIcon  className="size-3.5 text-foreground" />
+        </Link>
+      </div>
     </div>
   );
 };

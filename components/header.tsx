@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
 import FlippingText from "./flipping-text";
-import LocalTimeChip from "./time-chip";
+// import LocalTimeChip from "./time-chip";
 
 const Header = () => {
   return (
@@ -33,7 +33,7 @@ const Header = () => {
           />
         </div>
         <div className="flex flex-col items-end justify-between gap-2">
-          <LocalTimeChip />
+          {/*<LocalTimeChip />*/}
           <ThemeToggle />
         </div>
       </div>

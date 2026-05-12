@@ -28,16 +28,9 @@ export function ThemeToggle() {
 
     await transition.ready;
 
-    // Simple horizontal wipe with spring overshoot
     document.documentElement.animate(
-      {
-        clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
-      },
-      {
-        duration: 400,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      },
+      { clipPath: ["inset(0 0 100% 0)", "inset(0)"] },
+      { duration: 400, pseudoElement: "::view-transition-new(root)" },
     );
   };
 

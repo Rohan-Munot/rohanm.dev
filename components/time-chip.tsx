@@ -55,23 +55,12 @@ const LocalTimeChip = () => {
 
   if (!snapshot) return null;
 
-  const [userTime = "", relation = "", ownerTimeTooltip = ""] = snapshot.split(SNAPSHOT_SEPARATOR);
+  const [userTime = "", relation = ""] = snapshot.split(SNAPSHOT_SEPARATOR);
   const display = relation ? `${userTime} | ${relation}` : userTime;
 
   return (
-    <span className="relative inline-flex group">
-      <span
-        suppressHydrationWarning
-        className="custom-dotted-underline text-xs leading-4 font-normal text-muted-foreground tracking-wide cursor-help"
-      >
-        {display}
-      </span>
-      <span
-        role="tooltip"
-        className="pointer-events-none absolute right-0 top-full z-20 mt-1 w-max rounded-md border border-border bg-background px-2 py-1 text-[11px] leading-4 text-foreground opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
-      >
-        {ownerTimeTooltip}
-      </span>
+    <span className="text-xs leading-4 font-normal text-muted-foreground tracking-wide">
+      {display}
     </span>
   );
 };
