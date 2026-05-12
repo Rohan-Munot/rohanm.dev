@@ -40,11 +40,15 @@ const Experience = ({ data, className }: ExperienceProps) => {
         >
           {/* Timeline line */}
           {index !== data.length - 1 && (
-            <div className="absolute left-[7px] top-3 bottom-0 w-px bg-border" />
+            <div className="absolute left-[7px] top-5 bottom-0 w-px bg-border" />
           )}
 
           {/* Timeline dot */}
           <div className="absolute left-0 top-1.5 size-4 rounded-full border-2 border-border bg-background" />
+
+          {!item.endDate && (
+            <div className="absolute left-1.25 top-2.75 size-1.5 rounded-full bg-foreground animate-ping ease-in-out" />
+          )}
 
           <div className="flex flex-col gap-2">
             {/* Header */}
