@@ -1,68 +1,149 @@
 [
   {
-    "id": "react",
-    "name": "React",
-    "url": "https://react.dev",
-    "icon": "BrandReact"
+    "id": "javascript",
+    "name": "JavaScript",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "icon": "BrandJavascript",
+    "category": "core stack"
   },
   {
     "id": "typescript",
     "name": "TypeScript",
     "url": "https://www.typescriptlang.org",
-    "icon": "BrandTypescript"
+    "icon": "BrandTypescript",
+    "category": "core stack"
+  },
+  {
+    "id": "html",
+    "name": "HTML",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "icon": "BrandHtml5",
+    "category": "core stack"
+  },
+  {
+    "id": "css",
+    "name": "CSS",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "icon": "BrandCss3",
+    "category": "core stack"
+  },
+  {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "url": "https://www.mongodb.com",
+    "icon": "BrandMongodb",
+    "category": "core stack"
+  },
+  {
+    "id": "postgresql",
+    "name": "Postgres",
+    "url": "https://www.postgresql.org",
+    "icon": null,
+    "category": "core stack"
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "url": "https://en.wikipedia.org/wiki/SQL",
+    "icon": null,
+    "category": "core stack"
   },
   {
     "id": "nextjs",
     "name": "Next.js",
     "url": "https://nextjs.org",
-    "icon": "BrandNextjs"
-  },
-  {
-    "id": "tailwind-css",
-    "name": "Tailwind CSS",
-    "url": "https://tailwindcss.com",
-    "icon": "BrandTailwind"
-  },
-  {
-    "id": "node-js",
-    "name": "Node.js",
-    "url": "https://nodejs.org",
-    "icon": "BrandNodejs"
-  },
-  {
-    "id": "git",
-    "name": "Git",
-    "url": "https://git-scm.com",
-    "icon": "BrandGit"
-  },
-  {
-    "id": "figma",
-    "name": "Figma",
-    "url": "https://www.figma.com",
-    "icon": "BrandFigma"
-  },
-  {
-    "id": "motion",
-    "name": "Motion",
-    "url": "https://motion.dev",
-    "icon": "BrandFramer"
+    "icon": "BrandNextjs",
+    "category": "frameworks"
   },
   {
     "id": "expo",
     "name": "Expo",
     "url": "https://expo.dev",
-    "icon": "Expo"
+    "icon": "Expo",
+    "category": "frameworks"
+  },
+  {
+    "id": "expressjs",
+    "name": "ExpressJS",
+    "url": "https://expressjs.com",
+    "icon": null,
+    "category": "frameworks"
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "url": "https://git-scm.com",
+    "icon": "BrandGit",
+    "category": "Tools"
+  },
+  {
+    "id": "drizzle",
+    "name": "Drizzle",
+    "url": "https://orm.drizzle.team",
+    "icon": null,
+    "category": "Tools"
+  },
+  {
+    "id": "tailwind-css",
+    "name": "Tailwind",
+    "url": "https://tailwindcss.com",
+    "icon": "BrandTailwind",
+    "category": "Tools"
   },
   {
     "id": "tanstack-query",
     "name": "Tanstack Query",
     "url": "https://tanstack.com/query/latest",
-    "icon": "TanstackQuery"
+    "icon": "TanstackQuery",
+    "category": "Tools"
   },
   {
-    "id": "zustand",
-    "name": "Zustand",
-    "url": "https://zustand.docs.pmnd.rs/getting-started/introduction",
-    "icon": "Zustand"
+    "id": "better-auth",
+    "name": "Better Auth",
+    "url": "https://better-auth.com",
+    "icon": null,
+    "category": "Tools"
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://motion.dev",
+    "icon": "BrandFramer",
+    "category": "Tools"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "url": "https://cursor.sh",
+    "icon": null,
+    "category": "Softwares"
+  },
+  {
+    "id": "postman",
+    "name": "Postman",
+    "url": "https://postman.com",
+    "icon": null,
+    "category": "Softwares"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "icon": "BrandFigma",
+    "category": "Softwares"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "url": "https://vercel.com",
+    "icon": "BrandVercel",
+    "category": "platforms"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "url": "https://github.com",
+    "icon": "BrandGithub",
+    "category": "platforms"
   }
 ]

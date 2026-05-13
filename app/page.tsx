@@ -2,7 +2,7 @@ import Header from "@/components/layout/header";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
 import Experience from "@/components/features/experience";
-import Marquee from "@/components/features/marquee";
+import Marquee from "@/components/features/tools-marquee";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
 import experienceData from "@/data/experience.json";
@@ -18,7 +18,7 @@ const Page = () => {
           <Socials />
           <GitHubGraph />
         </Section>
-        <Section label="Tools">
+        <Section label="Tools" link="/tools">
           <Marquee data={toolsData} />
         </Section>
         <Section label="Experiences">
