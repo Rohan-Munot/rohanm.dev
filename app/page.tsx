@@ -1,9 +1,10 @@
-import Header from "@/components/header";
-import Socials from "@/components/socials";
-import GitHubGraph from "@/components/github-graph";
-import Experience from "@/components/experience";
-import Marquee from "@/components/marquee";
-import Projects from "@/components/projects";
+import Header from "@/components/layout/header";
+import Socials from "@/components/features/socials";
+import GitHubGraph from "@/components/features/github-graph";
+import Experience from "@/components/features/experience";
+import Marquee from "@/components/features/marquee";
+import Projects from "@/components/features/projects";
+import Section from "@/components/layout/section";
 import experienceData from "@/data/experience.json";
 import toolsData from "@/data/tools.json";
 import projectsData from "@/data/projects.json";
@@ -13,40 +14,19 @@ const Page = () => {
     <main className="min-h-screen flex justify-center relative mx-2">
       <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono">
         <Header />
-        <div className="p-4 dashed-border-x">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              Socials
-            </span>
-            <Socials />
-            <GitHubGraph />
-          </div>
-        </div>
-        <div className="p-4 dashed-border-x">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              Tools
-            </span>
-            <Marquee data={toolsData} />
-          </div>
-        </div>
-        <div className="p-4 dashed-border-x">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              Experiences
-            </span>
-            <Experience data={experienceData} />
-          </div>
-        </div>
-
-        <div className="p-4 dashed-border-x mb-2 sm:mb-3">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              Projects
-            </span>
-            <Projects data={projectsData} />
-          </div>
-        </div>
+        <Section label="Socials">
+          <Socials />
+          <GitHubGraph />
+        </Section>
+        <Section label="Tools">
+          <Marquee data={toolsData} />
+        </Section>
+        <Section label="Experiences">
+          <Experience data={experienceData} />
+        </Section>
+        <Section label="Projects" className="mb-2 sm:mb-3">
+          <Projects data={projectsData} />
+        </Section>
       </div>
     </main>
   );

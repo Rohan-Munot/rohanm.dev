@@ -49,7 +49,7 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className="[&_svg]:size-4.5 items-start cursor-pointer rounded-md p-1 [&_svg]:text-foreground"
+      className="[&_svg]:size-4.5 items-start cursor-pointer rounded-md p-1 [&_svg]:text-foreground hover:bg-secondary hover:border-secondary-foreground/30 border border-transparent transition-all ease-in-out"
     >
       {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
     </button>

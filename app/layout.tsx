@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 
 const ibmPlexSans = IBM_Plex_Sans({

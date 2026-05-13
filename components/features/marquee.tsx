@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/badge";
+import { Badge } from "@/components/ui/badge";
 
 // Phosphor Icons
 import { CodeIcon } from "@phosphor-icons/react";
@@ -19,7 +19,7 @@ import {
   IconBrandFramer,
 } from "@tabler/icons-react";
 
-import { IconExpo, IconTanstackQuery, IconZustand } from "@/components/icons";
+import { IconExpo, IconTanstackQuery, IconZustand } from "@/components/ui/icons";
 
 interface Tool {
   id: string;

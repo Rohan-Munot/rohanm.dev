@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Badge } from "./badge";
+import { Badge } from "@/components/ui/badge";
 import { ArrowSquareOutIcon, GithubLogoIcon } from "@phosphor-icons/react";
 
 interface Project {

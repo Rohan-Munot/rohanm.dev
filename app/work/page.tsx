@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ArrowLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
-import { Badge } from "@/components/badge";
+import { Badge } from "@/components/ui/badge";
 import experienceData from "@/data/experience.json";
 import Link from "next/link";
 
