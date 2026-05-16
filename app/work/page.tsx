@@ -11,7 +11,7 @@ const WorkPage = () => {
   return (
     <main className="min-h-screen flex justify-center relative mx-2">
       <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono">
-        <div className="p-4 dashed-border-x">
+        <div className="p-4 dashed-border-x mt-2 sm:mt-3">
           <button
             onClick={() => router.back()}
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-max cursor-pointer"

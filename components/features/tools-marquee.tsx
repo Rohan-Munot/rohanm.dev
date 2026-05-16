@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import ToolBadge from "@/components/features/tool-badge";
 import type { Tool } from "@/lib/types";
@@ -21,7 +21,6 @@ const MarqueeContent = ({ data }: { data: Tool[] }) => {
 };
 
 const Marquee = ({ data, className }: MarqueeProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   const duplicatedData = [...data, ...data, ...data];
@@ -33,7 +32,6 @@ const Marquee = ({ data, className }: MarqueeProps) => {
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
 
       <div
-        ref={containerRef}
         className="flex gap-3 w-max"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}

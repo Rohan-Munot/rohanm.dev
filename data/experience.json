@@ -3,10 +3,7 @@
     "id": "clinikally",
     "company": "Clinikally (YC 22)",
     "role": "Frontend Engineer",
-    "description": [
-      "Contributing to high-performance healthcare technology.",
-      "Building impactful user experiences."
-    ],
+    "description": ["Joined amazing team as Frontend Engineer"],
     "startDate": "2026-05",
     "endDate": null,
     "url": "https://www.clinikally.com/"
@@ -16,8 +13,11 @@
     "company": "Clinikally (YC 22)",
     "role": "Software Engineer Intern",
     "description": [
-      "Joined a great team at Clinikally, contributing to high-performance healthcare technology.",
-      "Built impactful user experiences for the platform."
+      "Optimizing PDP pages for improved performace",
+      "Improved web vitals (TBT, LCP, FCP) by 30% through code-splitting, lazy loading, and image optimization.",
+      "SEO enhancements by including structured data",
+      "Unit tests using Jest and RTL for component reliability",
+      "Overall user interaction improvemts"
     ],
     "startDate": "2026-02",
     "endDate": "2026-05",
@@ -29,8 +29,7 @@
     "role": "Frontend Developer Intern",
     "description": [
       "Built a performance-focused analytics dashboard using Next.js, optimizing the rendering of large datasets.",
-      "Integrated AI capabilities (Voice, Text) via WebSockets/REST APIs.",
-      "Enhanced interactivity and UX using Framer Motion."
+      "Integrated AI capabilities (Voice, Text) via WebSockets/REST APIs."
     ],
     "startDate": "2025-04",
     "endDate": "2026-02",

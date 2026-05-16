@@ -2,7 +2,7 @@
   {
     "id": "metro-route-finder",
     "name": "Metro Route Finder",
-    "description": "A simple, self-built website to explore Delhi Metro routes, created to make finding the right routes quicker and more intuitive than existing options.",
+    "description": "A transit navigation app for the Delhi Metro that helps users find metro stations and routes between landmarks or from their current location.",
     "url": "https://metro.rohanm.dev/",
     "github": "https://github.com/Rohan-Munot/metro",
     "tools": ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -11,7 +11,7 @@
   {
     "id": "sigen",
     "name": "Sigen",
-    "description": "A custom Figma plugin that converts icons into clean React and React Native components, making the design-to-code workflow faster and smoother.",
+    "description": "A Figma plugin that converts icons into clean React and React Native components, making the design-to-code workflow faster and smoother.",
     "url": null,
     "github": "https://github.com/Rohan-Munot/sigen",
     "tools": ["TypeScript", "Tailwind CSS"],

@@ -35,17 +35,10 @@
     "category": "core stack"
   },
   {
-    "id": "postgresql",
-    "name": "Postgres",
-    "url": "https://www.postgresql.org",
-    "icon": null,
-    "category": "core stack"
-  },
-  {
     "id": "sql",
     "name": "SQL",
     "url": "https://en.wikipedia.org/wiki/SQL",
-    "icon": null,
+    "icon": "SqlAsset",
     "category": "core stack"
   },
   {
@@ -66,7 +59,7 @@
     "id": "expressjs",
     "name": "ExpressJS",
     "url": "https://expressjs.com",
-    "icon": null,
+    "icon": "ExpressJsAsset",
     "category": "frameworks"
   },
   {
@@ -80,7 +73,7 @@
     "id": "drizzle",
     "name": "Drizzle",
     "url": "https://orm.drizzle.team",
-    "icon": null,
+    "icon": "DrizzleAsset",
     "category": "Tools"
   },
   {
@@ -101,7 +94,7 @@
     "id": "better-auth",
     "name": "Better Auth",
     "url": "https://better-auth.com",
-    "icon": null,
+    "icon": "BetterAuthAsset",
     "category": "Tools"
   },
   {
@@ -115,14 +108,14 @@
     "id": "cursor",
     "name": "Cursor",
     "url": "https://cursor.sh",
-    "icon": null,
+    "icon": "CursorAsset",
     "category": "Softwares"
   },
   {
     "id": "postman",
     "name": "Postman",
     "url": "https://postman.com",
-    "icon": null,
+    "icon": "PostmanAsset",
     "category": "Softwares"
   },
   {
