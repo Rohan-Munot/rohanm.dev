@@ -90,8 +90,9 @@ const Experience = ({ data, className, showAll = false }: ExperienceProps) => {
             )}
 
             {/* Tools */}
+            {item.tools && <span className="text-sm text-foreground">Technologies & Tools</span>}
             {item.tools && (
-              <div className="flex flex-wrap gap-1.5 mt-1">
+              <div className="flex flex-wrap gap-1.5">
                 {item.tools.map((tool) => (
                   <Badge key={tool}>{tool}</Badge>
                 ))}

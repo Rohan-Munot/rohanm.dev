@@ -5,6 +5,7 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import ToolBadge from "@/components/features/tool-badge";
 import toolsData from "@/data/tools.json";
 import type { Tool } from "@/lib/types";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const categoryOrder = [
   "core stack",
@@ -26,7 +27,7 @@ const ToolsPage = () => {
   return (
     <main className="min-h-screen flex justify-center relative mx-2">
       <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono pb-2 sm:pb-3">
-        <div className="p-4 dashed-border-x mt-2 sm:mt-3">
+        <div className="p-4 dashed-border-x mt-2 sm:mt-3 flex items-center justify-between">
           <button
             onClick={() => router.back()}
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-max cursor-pointer"
@@ -34,6 +35,7 @@ const ToolsPage = () => {
             <ArrowLeftIcon className="size-4" />
             <span>Back</span>
           </button>
+          <ThemeToggle />
         </div>
 
         <div className="flex flex-col gap-6 p-4 dashed-border-x mb-2 sm:mb-3">

@@ -21,6 +21,7 @@
     ],
     "startDate": "2026-02",
     "endDate": "2026-05",
+    "tools": ["Next.js", "TypeScript", "Figma", "Jest", "RTL"],
     "url": "https://www.clinikally.com/"
   },
   {
