@@ -17,7 +17,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rohan M",
+  title: "Rohan Munot",
   description: "Frontend Developer",
 };
 
