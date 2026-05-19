@@ -12,7 +12,7 @@ import projectsData from "@/data/projects.json";
 const Page = () => {
   return (
     <main className="min-h-screen flex justify-center relative mx-2">
-      <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono">
+      <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
         <Header />
         <Section label="Socials">
           <Socials />
@@ -24,7 +24,7 @@ const Page = () => {
         <Section label="Experiences">
           <Experience data={experienceData} />
         </Section>
-        <Section label="Projects" className="mb-2 sm:mb-3">
+        <Section label="Projects">
           <Projects data={projectsData} />
         </Section>
       </div>
