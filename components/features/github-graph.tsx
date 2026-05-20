@@ -307,7 +307,7 @@ const GitHubGraph = () => {
             )}
             <div className="flex items-center justify-between mt-2">
               <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
-                {data.total} contributions last year.
+                {data.total} contributions last year
               </span>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">Less</span>
