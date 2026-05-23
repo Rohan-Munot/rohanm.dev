@@ -190,6 +190,11 @@ body {
     color: var(--foreground);
 }
 
+::selection {
+    background: #ffef00;
+    color: oklch(0.216 0.006 56.043);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
     animation: none;
