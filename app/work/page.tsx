@@ -2,6 +2,7 @@ import experienceData from "@/data/experience.json";
 import Experience from "@/components/features/experience";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
+import Footer from "@/components/layout/footer";
 
 const WorkPage = () => {
   return (
@@ -20,6 +21,7 @@ const WorkPage = () => {
             <Experience data={experienceData} showAll={true} />
           </div>
         </div>
+        <Footer />
       </div>
     </main>
   );

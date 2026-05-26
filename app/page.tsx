@@ -5,6 +5,7 @@ import Experience from "@/components/features/experience";
 import Marquee from "@/components/features/tools-marquee";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
+import Footer from "@/components/layout/footer";
 import experienceData from "@/data/experience.json";
 import toolsData from "@/data/tools.json";
 import projectsData from "@/data/projects.json";
@@ -27,6 +28,7 @@ const Page = () => {
         <Section label="Projects">
           <Projects data={projectsData} />
         </Section>
+        <Footer />
       </div>
     </main>
   );

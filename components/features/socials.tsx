@@ -6,7 +6,7 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 
-const socials = [
+export const socials = [
   {
     name: "GitHub",
     href: "https://github.com/Rohan-Munot",

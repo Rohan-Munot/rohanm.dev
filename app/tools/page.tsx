@@ -3,6 +3,7 @@ import toolsData from "@/data/tools.json";
 import type { Tool } from "@/lib/types";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
+import Footer from "@/components/layout/footer";
 
 const categoryOrder = [
   "core stack",
@@ -45,6 +46,7 @@ const ToolsPage = () => {
             </div>
           ))}
         </div>
+        <Footer />
       </div>
     </main>
   );

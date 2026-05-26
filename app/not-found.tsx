@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
+import Footer from "@/components/layout/footer";
 
 const Page = () => {
   return (
@@ -29,6 +30,7 @@ const Page = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </main>
   );
