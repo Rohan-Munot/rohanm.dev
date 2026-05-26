@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
-import { CodeIcon } from "@phosphor-icons/react";
+import { CodeIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   IconBrandCss3,
   IconBrandFigma,

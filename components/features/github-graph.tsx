@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import SnakeGame from "./snake-game";
 import { CursorClickIcon } from "@phosphor-icons/react/ssr";
@@ -189,42 +188,26 @@ const GitHubGraph = () => {
 
   return (
     <div ref={containerRef} className="github-graph relative w-full">
-      <AnimatePresence mode="wait">
-        {showGame ? (
-          <motion.div
-            key="game"
-            initial={{ opacity: 0, filter: "blur(4px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(4px)" }}
-            transition={{ duration: 0.2 }}
-          >
-            <SnakeGame
-              rows={rows}
-              cols={cols}
-              onClose={() => setShowGame(false)}
-            />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="graph"
-            initial={{ opacity: 0, filter: "blur(4px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(4px)" }}
-            transition={{ duration: 0.2 }}
-            onClick={isMobile ? undefined : () => setShowGame(true)}
-            className={cn("group relative", !isMobile && "cursor-pointer")}
-            role={isMobile ? undefined : "button"}
-            tabIndex={isMobile ? undefined : 0}
-            onKeyDown={
-              isMobile
-                ? undefined
-                : (e) => {
+      {showGame ? (
+        <div>
+          <SnakeGame rows={rows} cols={cols} onClose={() => setShowGame(false)} />
+        </div>
+      ) : (
+        <div
+          onClick={isMobile ? undefined : () => setShowGame(true)}
+          className={cn("group relative", !isMobile && "cursor-pointer")}
+          role={isMobile ? undefined : "button"}
+          tabIndex={isMobile ? undefined : 0}
+          onKeyDown={
+            isMobile
+              ? undefined
+              : (e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     setShowGame(true);
                   }
                 }
-            }
-          >
+          }
+        >
             <div className="overflow-x-auto py-1">
               <div className="min-w-[700px]">
                 {/* Month labels */}
@@ -249,22 +232,8 @@ const GitHubGraph = () => {
                   {weeks.map((week, weekIndex) => (
                     <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
                       {week.map((day, dayIndex) => (
-                        <motion.div
+                        <div
                           key={day.date}
-                          initial={{
-                            opacity: 0,
-                            scale: 0.25,
-                            filter: "blur(4px)",
-                          }}
-                          animate={{
-                            opacity: 1,
-                            scale: 1,
-                            filter: "blur(0px)",
-                          }}
-                          transition={{
-                            duration: 0.2,
-                            delay: weekIndex * 0.01 + dayIndex * 0.005,
-                          }}
                           className={cn(
                             "aspect-square rounded-[2px] cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
                             getContributionClass(
@@ -330,11 +299,10 @@ const GitHubGraph = () => {
                   click
                 </span>
                 <CursorClickIcon className="size-3.5" />
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  </div>
+                )}
+        </div>
+      )}
     </div>
   );
 };

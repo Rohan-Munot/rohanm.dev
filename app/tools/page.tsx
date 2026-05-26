@@ -1,11 +1,8 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import ToolBadge from "@/components/features/tool-badge";
 import toolsData from "@/data/tools.json";
 import type { Tool } from "@/lib/types";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import BackButton from "@/components/ui/back-button";
 
 const categoryOrder = [
   "core stack",
@@ -22,19 +19,11 @@ const grouped = categoryOrder.reduce<Record<string, Tool[]>>((acc, cat) => {
 }, {});
 
 const ToolsPage = () => {
-  const router = useRouter();
-
   return (
     <main className="min-h-screen flex justify-center relative mx-2">
       <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono pb-2 sm:pb-3">
         <div className="p-4 dashed-border-x mt-2 sm:mt-3 flex items-center justify-between">
-          <button
-            onClick={() => router.back()}
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-max cursor-pointer"
-          >
-            <ArrowLeftIcon className="size-4" />
-            <span>Back</span>
-          </button>
+          <BackButton />
           <ThemeToggle />
         </div>
 

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const revalidate = 3600;
+
 interface ContributionDay {
   date: string;
   contributionCount: number;
