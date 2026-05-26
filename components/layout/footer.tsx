@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer className="p-4 dashed-border-x">
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2.5">
         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             {socials.map((social) => (
@@ -41,7 +41,7 @@ const Footer = () => {
           </span>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <p className="text-xs text-muted-foreground inline-flex items-center gap-1">
             <CopyrightIcon className="inline-block size-3.5 align-middle" />{" "}
             {year} Rohan Munot
