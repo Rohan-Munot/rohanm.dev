@@ -81,7 +81,7 @@ const Experience = ({ data, className, showAll = false }: ExperienceProps) => {
                 {item.description.map((point, i) => (
                   <li
                     key={i}
-                    className="relative pl-4 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground/60"
+                    className="relative pl-4 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground"
                   >
                     {point}
                   </li>

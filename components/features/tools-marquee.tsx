@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import ToolBadge from "@/components/features/tool-badge";
 import type { Tool } from "@/lib/types";
@@ -21,25 +18,15 @@ const MarqueeContent = ({ data }: { data: Tool[] }) => {
 };
 
 const Marquee = ({ data, className }: MarqueeProps) => {
-  const [isPaused, setIsPaused] = useState(false);
-
-  const duplicatedData = [...data, ...data, ...data];
-
   return (
-    <div className={cn("relative overflow-hidden w-full", className)}>
+    <div className={cn("tools-marquee relative overflow-hidden w-full", className)}>
       <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
 
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
 
-      <div
-        className="flex gap-3 w-max"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        style={{
-          animation: `marquee 40s linear infinite ${isPaused ? "paused" : "running"}`,
-        }}
-      >
-        <MarqueeContent data={duplicatedData} />
+      <div className="tools-marquee-track flex gap-3 w-max">
+        <MarqueeContent data={data} />
+        <MarqueeContent data={data} />
       </div>
 
       <style>{`
@@ -48,8 +35,17 @@ const Marquee = ({ data, className }: MarqueeProps) => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translateX(-50%);
           }
+        }
+
+        .tools-marquee-track {
+          animation: marquee 20s linear infinite;
+          will-change: transform;
+        }
+
+        .tools-marquee:hover .tools-marquee-track {
+          animation-play-state: paused;
         }
       `}</style>
     </div>

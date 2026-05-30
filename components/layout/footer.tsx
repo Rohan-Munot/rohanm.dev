@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="p-4 dashed-border-x">
+    <footer className="p-4 dashed-border-x mb-2 sm:mb-3">
       <div className="flex flex-col gap-2.5">
         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">

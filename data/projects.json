@@ -20,7 +20,7 @@
   {
     "id": "inset-ui",
     "name": "Inset UI",
-    "description": "A modular component library compatible with Shadcn resgistry, built using Base UI and Tailwind CSS.",
+    "description": "A modular component library compatible with Shadcn resgistry, built using Radix UI and Tailwind CSS.",
     "url": "https://ui.rohanm.dev/",
     "github": null,
     "tools": ["Radix UI", "Tailwind CSS"],

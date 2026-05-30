@@ -35,7 +35,7 @@ const ToolsPage = () => {
 
           {Object.entries(grouped).map(([category, items]) => (
             <div key={category} className="flex flex-col gap-3">
-              <span className="text-xs font-medium text-muted-foreground/60 uppercase tracking-wider">
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 {category}
               </span>
               <div className="flex flex-wrap gap-2">
