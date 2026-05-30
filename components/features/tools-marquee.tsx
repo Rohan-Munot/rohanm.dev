@@ -40,8 +40,7 @@ const Marquee = ({ data, className }: MarqueeProps) => {
         }
 
         .tools-marquee-track {
-          animation: marquee 20s linear infinite;
-          will-change: transform;
+          animation: marquee 40s linear infinite;
         }
 
         .tools-marquee:hover .tools-marquee-track {
