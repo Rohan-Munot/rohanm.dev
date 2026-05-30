@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-
+import { ExperienceLogo } from "./experience-logo";
 export interface ExperienceItem {
   id: string;
   company: string;
@@ -25,21 +25,7 @@ const formatDate = (dateString: string): string => {
 export const ExperienceContent = ({ item }: { item: ExperienceItem }) => (
   <div className="not-last:border-b not-last:border-dashed not-last:border-border py-4 flex flex-col gap-3">
     <div className="flex items-center gap-3">
-      <div className="size-8 rounded-sm overflow-hidden bg-muted shrink-0 border border-border/40 flex items-center justify-center">
-        {item.logo ? (
-          <Image
-            src={`/logos/${item.logo}.png`}
-            alt={`${item.company} logo`}
-            width={32}
-            height={32}
-            className="size-full object-contain"
-          />
-        ) : (
-          <span className="text-xs text-muted-foreground font-mono">
-            {item.company.charAt(0)}
-          </span>
-        )}
-      </div>
+      <ExperienceLogo item={item} />
       <div className="flex-1 min-w-0 flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-2">
           {item.url ? (
