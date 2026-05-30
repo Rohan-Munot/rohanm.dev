@@ -17,8 +17,35 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rohan Munot",
-  description: "Frontend Developer",
+  metadataBase: new URL("https://rohanm.dev"),
+  title: {
+    default: "Rohan Munot | Frontend Developer",
+    template: "%s | Rohan Munot",
+  },
+  description:
+    "Frontend developer based in India. Building performant, animated web experiences with React, Next.js, and TypeScript.",
+  openGraph: {
+    title: "Rohan Munot | Frontend Developer",
+    description:
+      "Frontend developer based in India. Building performant, animated web experiences with React, Next.js, and TypeScript.",
+    url: "https://rohanm.dev",
+    siteName: "rohanm.dev",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rohan Munot | Frontend Developer",
+    description:
+      "Frontend developer based in India. Building performant, animated web experiences with React, Next.js, and TypeScript.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

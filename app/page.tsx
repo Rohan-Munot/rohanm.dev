@@ -6,31 +6,35 @@ import Marquee from "@/components/features/tools-marquee";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
 import Footer from "@/components/layout/footer";
+import JsonLd from "@/components/seo/json-ld";
 import experienceData from "@/data/experience.json";
 import toolsData from "@/data/tools.json";
 import projectsData from "@/data/projects.json";
 
 const Page = () => {
   return (
-    <main className="min-h-screen flex justify-center relative mx-2">
-      <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
-        <Header />
-        <Section label="Socials">
-          <Socials />
-          <GitHubGraph />
-        </Section>
-        <Section label="Tools" link="/tools">
-          <Marquee data={toolsData} />
-        </Section>
-        <Section label="Experiences">
-          <Experience data={experienceData} />
-        </Section>
-        <Section label="Projects">
-          <Projects data={projectsData} />
-        </Section>
-        <Footer />
-      </div>
-    </main>
+    <>
+      <JsonLd />
+      <main className="min-h-screen flex justify-center relative mx-2">
+        <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
+          <Header />
+          <Section label="Socials">
+            <Socials />
+            <GitHubGraph />
+          </Section>
+          <Section label="Tools" link="/tools">
+            <Marquee data={toolsData} />
+          </Section>
+          <Section label="Experiences">
+            <Experience data={experienceData} />
+          </Section>
+          <Section label="Projects">
+            <Projects data={projectsData} />
+          </Section>
+          <Footer />
+        </div>
+      </main>
+    </>
   );
 };
 

@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import experienceData from "@/data/experience.json";
 import Experience from "@/components/features/experience";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
 import Footer from "@/components/layout/footer";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Frontend development experience at Clinikally (YC 22), BrandContext, and Novillex — building performant web applications with React and Next.js.",
+};
 
 const WorkPage = () => {
   return (
@@ -15,9 +22,9 @@ const WorkPage = () => {
 
         <div className="p-4 dashed-border-x mb-2 sm:mb-3">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
+            <h1 className="text-xs font-medium text-muted-foreground">
               Experience
-            </span>
+            </h1>
             <Experience data={experienceData} showAll={true} />
           </div>
         </div>

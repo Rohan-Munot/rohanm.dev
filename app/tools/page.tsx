@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import ToolBadge from "@/components/features/tool-badge";
 import toolsData from "@/data/tools.json";
 import type { Tool } from "@/lib/types";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
 import Footer from "@/components/layout/footer";
+
+export const metadata: Metadata = {
+  title: "Tools",
+  description:
+    "Technologies and tools I use daily — React, Next.js, TypeScript, Tailwind CSS, and more for frontend development.",
+};
 
 const categoryOrder = [
   "core stack",
@@ -29,9 +36,9 @@ const ToolsPage = () => {
         </div>
 
         <div className="flex flex-col gap-6 p-4 dashed-border-x mb-2 sm:mb-3">
-          <span className="text-xs font-medium text-muted-foreground">
+          <h1 className="text-xs font-medium text-muted-foreground">
             Tools
-          </span>
+          </h1>
 
           {Object.entries(grouped).map(([category, items]) => (
             <div key={category} className="flex flex-col gap-3">
