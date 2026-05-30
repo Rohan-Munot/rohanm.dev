@@ -6,6 +6,7 @@
     "description": ["Joined amazing team as Frontend Engineer"],
     "startDate": "2026-05",
     "endDate": null,
+    "logo": "clinikally",
     "url": "https://www.clinikally.com/"
   },
   {
@@ -13,14 +14,15 @@
     "company": "Clinikally (YC 22)",
     "role": "Software Engineer Intern",
     "description": [
-      "Optimizing PDP pages for improved performace",
+      "Optimizing PDP pages for improved performance",
       "Improved web vitals (TBT, LCP, FCP) by 30% through code-splitting, lazy loading, and image optimization.",
       "SEO enhancements by including structured data",
       "Unit tests using Jest and RTL for component reliability",
-      "Overall user interaction improvemts"
+      "Overall user interaction improvements"
     ],
     "startDate": "2026-02",
     "endDate": "2026-05",
+    "logo": "clinikally",
     "tools": ["Next.js", "TypeScript", "Figma", "Jest", "RTL"],
     "url": "https://www.clinikally.com/"
   },
@@ -34,6 +36,7 @@
     ],
     "startDate": "2025-04",
     "endDate": "2026-02",
+    "logo": "brandcontext",
     "tools": [
       "Next.js",
       "TypeScript",
@@ -53,6 +56,7 @@
     ],
     "startDate": "2025-06",
     "endDate": "2025-11",
+    "logo": "novillex",
     "tools": ["React", "TypeScript", "REST APIs"],
     "url": "https://www.novillex.com/"
   }
