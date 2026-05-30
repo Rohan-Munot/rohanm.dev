@@ -29,7 +29,7 @@
   {
     "id": "arthatan",
     "name": "Arthatan",
-    "description": "A high-performance marketing landing page for a company built using Next.js.",
+    "description": "Landing page for a financial services company with modern and minial design.",
     "url": "https://arthatan.vercel.app",
     "github": null,
     "tools": ["Next.js", "Tailwind CSS", "Shadcn UI", "Motion"],
