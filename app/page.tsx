@@ -1,7 +1,7 @@
 import Header from "@/components/layout/header";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
-import Experience from "@/components/features/experience";
+import { ExperienceCard } from "@/components/features/experience/experience-card";
 import Marquee from "@/components/features/tools-marquee";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
@@ -25,8 +25,12 @@ const Page = () => {
           <Section label="Tools" link="/tools">
             <Marquee data={toolsData} />
           </Section>
-          <Section label="Experiences">
-            <Experience data={experienceData} />
+          <Section label="Experiences" link="/work">
+            <div className="flex flex-col">
+              {experienceData.map((item) => (
+                <ExperienceCard key={item.id} item={item} />
+              ))}
+            </div>
           </Section>
           <Section label="Projects">
             <Projects data={projectsData} />

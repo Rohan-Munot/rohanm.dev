@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import experienceData from "@/data/experience.json";
-import Experience from "@/components/features/experience";
+import { ExperienceContent } from "@/components/features/experience/experience-content";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
 import Footer from "@/components/layout/footer";
@@ -25,7 +25,11 @@ const WorkPage = () => {
             <h1 className="text-xs font-medium text-muted-foreground">
               Experience
             </h1>
-            <Experience data={experienceData} showAll={true} />
+            <div className="flex flex-col">
+              {experienceData.map((item) => (
+                <ExperienceContent key={item.id} item={item} />
+              ))}
+            </div>
           </div>
         </div>
         <Footer />
