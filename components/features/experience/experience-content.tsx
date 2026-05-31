@@ -1,9 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { ExperienceLogo } from "./experience-logo";
+import { ExperienceBullets } from "./experience-bullets";
+
 export interface ExperienceItem {
   id: string;
   company: string;
@@ -51,28 +49,10 @@ export const ExperienceContent = ({ item }: { item: ExperienceItem }) => (
       </div>
     </div>
     <div className="pl-11 flex flex-col gap-2.5">
-      {item.description.length > 0 && (
-        <ul className="text-sm text-muted-foreground leading-relaxed space-y-1">
-          {item.description.map((point, i) => (
-            <li
-              key={i}
-              className="relative pl-4 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground"
-            >
-              {point}
-            </li>
-          ))}
-        </ul>
-      )}
-      {item.tools && item.tools.length > 0 && (
-        <div className="flex flex-col gap-1.5">
-          <span className="text-xs text-foreground">Stack</span>
-          <div className="flex flex-wrap gap-1.5">
-            {item.tools.map((tool) => (
-              <Badge key={tool}>{tool}</Badge>
-            ))}
-          </div>
-        </div>
-      )}
+      <ExperienceBullets
+        items={item.description}
+        tools={item.tools}
+      />
     </div>
   </div>
 );

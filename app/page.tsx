@@ -1,7 +1,7 @@
 import Header from "@/components/layout/header";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
-import { ExperienceCard } from "@/components/features/experience-card";
+import { ExperienceCard } from "@/components/features/experience/experience-card";
 import Marquee from "@/components/features/tools-marquee";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";

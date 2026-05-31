@@ -19,34 +19,11 @@ const MarqueeContent = ({ data }: { data: Tool[] }) => {
 
 const Marquee = ({ data, className }: MarqueeProps) => {
   return (
-    <div className={cn("tools-marquee relative overflow-hidden w-full", className)}>
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
-
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
-
-      <div className="tools-marquee-track flex gap-3 w-max">
+    <div className={cn("group relative overflow-hidden w-full mask-[linear-gradient(to_right,transparent_0px,black_96px,black_calc(100%-96px),transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0px,black_96px,black_calc(100%-96px),transparent_100%)]", className)}>
+      <div className="flex gap-3 w-max animate-marquee group-hover:[animation-play-state:paused]">
         <MarqueeContent data={data} />
         <MarqueeContent data={data} />
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .tools-marquee-track {
-          animation: marquee 40s linear infinite;
-        }
-
-        .tools-marquee:hover .tools-marquee-track {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 };

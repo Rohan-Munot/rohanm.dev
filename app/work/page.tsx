@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import experienceData from "@/data/experience.json";
-import { ExperienceContent } from "@/components/features/experience-content";
+import { ExperienceContent } from "@/components/features/experience/experience-content";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
 import Footer from "@/components/layout/footer";
