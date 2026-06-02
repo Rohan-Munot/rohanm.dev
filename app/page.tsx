@@ -3,7 +3,7 @@ import About from "@/components/features/about";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
 import { ExperienceCard } from "@/components/features/experience/experience-card";
-import Marquee from "@/components/features/tools-marquee";
+import ToolsFlex from "@/components/features/tools-flex";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
 import Footer from "@/components/layout/footer";
@@ -26,8 +26,8 @@ const Page = () => {
             <Socials />
             <GitHubGraph />
           </Section>
-          <Section label="Tools" link="/tools">
-            <Marquee data={toolsData} />
+          <Section label="Tools">
+            <ToolsFlex data={toolsData} />
           </Section>
           <Section label="Experiences" link="/work">
             <div className="flex flex-col">

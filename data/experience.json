@@ -59,19 +59,5 @@
     "logo": "novillex",
     "tools": ["React", "TypeScript", "REST APIs"],
     "url": "https://www.novillex.com/"
-  },
-  {
-    "id": "Digivikreta",
-    "company": "DigiVikreta",
-    "role": "Software Developer",
-    "description": [
-      "Implemented a real-time data visualization dashboard for monitoring IoT devices using React and D3.js.",
-      "Optimized data processing pipelines to handle large volumes of sensor data, improving performance by 25%."
-    ],
-    "startDate": "2024-06",
-    "endDate": "2024-08",
-    "logo": "digivikreta",
-    "tools": ["React", "D3.js", "WebSockets"],
-    "url": "https://www.samsung.com/in/sar-bangalore/"
   }
 ]
