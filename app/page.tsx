@@ -19,7 +19,7 @@ const Page = () => {
       <main className="min-h-screen flex justify-center relative mx-2">
         <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
           <Header />
-          <Section >
+          <Section label="Hello">
             <About />
           </Section>
           <Section label="Socials">
