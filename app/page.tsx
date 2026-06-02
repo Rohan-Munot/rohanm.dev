@@ -1,8 +1,9 @@
 import Header from "@/components/layout/header";
+import About from "@/components/features/about";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
 import { ExperienceCard } from "@/components/features/experience/experience-card";
-import Marquee from "@/components/features/tools-marquee";
+import ToolsFlex from "@/components/features/tools-flex";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";
 import Footer from "@/components/layout/footer";
@@ -18,12 +19,15 @@ const Page = () => {
       <main className="min-h-screen flex justify-center relative mx-2">
         <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
           <Header />
+          <Section label="Hello">
+            <About />
+          </Section>
           <Section label="Socials">
             <Socials />
             <GitHubGraph />
           </Section>
-          <Section label="Tools" link="/tools">
-            <Marquee data={toolsData} />
+          <Section label="Tools">
+            <ToolsFlex data={toolsData} />
           </Section>
           <Section label="Experiences" link="/work">
             <div className="flex flex-col">

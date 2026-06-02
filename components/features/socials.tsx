@@ -43,7 +43,7 @@ const Socials = () => {
             />
           }
         >
-          <social.icon className="size-4 sm:size-3.5" />
+          <social.icon />
           {social.name}
         </Badge>
       ))}

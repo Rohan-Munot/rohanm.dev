@@ -13,8 +13,8 @@ const Header = () => {
             Rohan Munot
           </h1>
           <FlippingText
-            texts={["Frontend Developer", "Based in India"]}
-            interval={3000}
+            texts={["Frontend Developer", "Software Engineer", "Freelancer"]}
+            interval={2000}
             className="text-sm leading-4 font-normal text-muted-foreground tracking-tight"
           />
         </div>
