@@ -231,11 +231,11 @@ const GitHubGraph = () => {
                 <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
                   {weeks.map((week, weekIndex) => (
                     <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
-                      {week.map((day, dayIndex) => (
+                      {week.map((day) => (
                         <div
                           key={day.date}
                           className={cn(
-                            "aspect-square rounded-[2px] cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
+                            "aspect-square cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
                             getContributionClass(
                               getContributionLevel(day.count),
                             ),

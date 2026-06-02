@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
-  label: string;
+  label?: string;
   link?: string;
   children: ReactNode;
   className?: string;
@@ -14,6 +14,7 @@ const Section = ({ label, link, children, className }: SectionProps) => {
   return (
     <div className={cn("p-4 dashed-border-x", className)}>
       <div className="flex flex-col gap-2">
+        {(label || link) && (
         <div className="flex justify-between text-xs font-medium text-muted-foreground">
           <span>
             {label}
@@ -28,6 +29,7 @@ const Section = ({ label, link, children, className }: SectionProps) => {
             </Link>
           )}
         </div>
+        )}
         {children}
       </div>
     </div>
