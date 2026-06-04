@@ -32,7 +32,7 @@ const About = () => {
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 gap-y-0">
           <span className="text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
