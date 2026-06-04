@@ -5,7 +5,7 @@ import PawArt from "./paw-art";
 
 const About = () => {
   return (
-    <div className="relative flex flex-col gap-4 overflow-hidden pb-4 pr-12 sm:pr-24">
+    <div className="relative flex flex-col gap-4 overflow-hidden pb-4 sm:pr-12">
       <PawArt className="absolute bottom-0 right-0" />
 
       <div className="flex flex-col gap-3 text-sm leading-relaxed">
@@ -26,7 +26,7 @@ const About = () => {
           </span>
           <span className="text-foreground/75">
             I&apos;ve woked with freelance clients, had 3 Startup internships. Currently at{" "}
-            <Link href={'https://www.clinikally.com/'} className="text-foreground/90 underline underline-offset-4 hover:text-foreground/75">
+            <Link href={'https://www.clinikally.com/'} className="text-foreground underline underline-offset-4 font-semibold">
               Clinikally
             </Link>
           </span>

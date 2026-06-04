@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { format, parse } from "date-fns";
 import { cn } from "@/lib/utils";
 import SnakeGame from "./snake-game";
 import { CursorClickIcon } from "@phosphor-icons/react/ssr";
@@ -31,13 +32,7 @@ const getContributionLevel = (count: number): number => {
 };
 
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  return format(parse(dateString, "yyyy-MM-dd", new Date()), "EEE, MMM d, yyyy");
 };
 
 const GitHubGraph = () => {
@@ -157,8 +152,8 @@ const GitHubGraph = () => {
 
     weeks.forEach((week, weekIndex) => {
       if (week.length > 0) {
-        const date = new Date(week[0].date);
-        const month = date.toLocaleDateString("en-US", { month: "short" });
+        const date = parse(week[0].date, "yyyy-MM-dd", new Date());
+        const month = format(date, "MMM");
         if (month !== lastMonth) {
           months.push({ month, weekIndex });
           lastMonth = month;

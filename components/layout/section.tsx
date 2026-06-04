@@ -8,9 +8,10 @@ interface SectionProps {
   link?: string;
   children: ReactNode;
   className?: string;
+  linkLabel?: string;
 }
 
-const Section = ({ label, link, children, className }: SectionProps) => {
+const Section = ({ label, link, children, className, linkLabel = 'All' }: SectionProps) => {
   return (
     <div className={cn("p-4 dashed-border-x", className)}>
       <div className="flex flex-col gap-2">
@@ -23,8 +24,8 @@ const Section = ({ label, link, children, className }: SectionProps) => {
             <Link
               href={link}
               className="flex items-center justify-center gap-1 "
-            >
-            All
+              >
+                {linkLabel}
             <ArrowBendDoubleUpRightIcon  className="size-3.5 text-foreground" />
             </Link>
           )}

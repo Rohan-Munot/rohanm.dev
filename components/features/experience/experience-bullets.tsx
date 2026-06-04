@@ -3,14 +3,16 @@ import { Badge } from "@/components/ui/badge";
 export const ExperienceBullets = ({
   items,
   tools,
+  showTools = true,
 }: {
   items: string[];
   tools?: string[];
+  showTools?: boolean;
 }) => {
   return (
     <>
       {items.length > 0 && (
-        <ul className="text-sm leading-relaxed space-y-1 text-foreground/80 tracking-wide">
+        <ul className="text-sm leading-relaxed space-y-1 text-foreground/80 tracking-tight">
           {items.map((point, i) => (
             <li
               key={i}
@@ -21,7 +23,7 @@ export const ExperienceBullets = ({
           ))}
         </ul>
       )}
-      {tools && tools.length > 0 && (
+      {tools && tools.length > 0 && showTools && (
         <div className="flex flex-col gap-1.5">
           <span className="text-xs text-foreground">Tools</span>
           <div className="flex flex-wrap gap-1.5">

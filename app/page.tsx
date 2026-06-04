@@ -29,7 +29,7 @@ const Page = () => {
           <Section label="Tools">
             <ToolsFlex data={toolsData} />
           </Section>
-          <Section label="Experiences" link="/work">
+          <Section label="Experiences" link="/work" linkLabel="Details">
             <div className="flex flex-col">
               {experienceData.map((item) => (
                 <ExperienceCard key={item.id} item={item} />

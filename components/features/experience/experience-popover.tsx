@@ -25,7 +25,7 @@ export const ExperiencePopover = ({
           sideOffset={-5}
           alignOffset={0}
         >
-          <Popover.Popup className="bg-background p-3.5 w-96 border border-border flex flex-col gap-3 z-50 relative">
+          <Popover.Popup className="bg-background p-3.5 max-w-86 border border-border flex flex-col gap-3 z-50 relative">
             <Popover.Close className="sm:hidden absolute top-3 right-3">
               <XIcon size={16} />
             </Popover.Close>
@@ -33,6 +33,7 @@ export const ExperiencePopover = ({
             <ExperienceBullets
               items={item.description}
               tools={item.tools}
+              showTools={false}
             />
           </Popover.Popup>
         </Popover.Positioner>

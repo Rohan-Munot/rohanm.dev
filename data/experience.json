@@ -3,7 +3,7 @@
     "id": "clinikally",
     "company": "Clinikally (YC 22)",
     "role": "Frontend Engineer",
-    "description": ["Joined amazing team as Frontend Engineer"],
+    "description": ["Joined a great team as a Frontend Engineer."],
     "startDate": "2026-05",
     "endDate": null,
     "logo": "clinikally",
@@ -14,11 +14,11 @@
     "company": "Clinikally (YC 22)",
     "role": "Software Engineer Intern",
     "description": [
-      "Optimizing PDP pages for improved performance",
-      "Improved web vitals (TBT, LCP, FCP) by 30% through code-splitting, lazy loading, and image optimization.",
-      "SEO enhancements by including structured data",
-      "Unit tests using Jest and RTL for component reliability",
-      "Overall user interaction improvements"
+      "Tuned product pages for speed.",
+      "Cut TBT, LCP and FCP by 30% with code-splitting, lazy loading and image work.",
+      "Added structured data to lift SEO.",
+      "Wrote Jest and RTL tests to keep components solid.",
+      "Polished the overall feel and flow."
     ],
     "startDate": "2026-02",
     "endDate": "2026-05",
@@ -31,8 +31,8 @@
     "company": "BrandContext",
     "role": "Frontend Developer Intern",
     "description": [
-      "Built a performance-focused analytics dashboard using Next.js, optimizing the rendering of large datasets.",
-      "Integrated AI capabilities (Voice, Text) via WebSockets/REST APIs."
+      "Built a fast analytics dashboard in Next.js, tuned to render large datasets.",
+      "Wired in AI voice and text over WebSockets and REST."
     ],
     "startDate": "2025-04",
     "endDate": "2026-02",
@@ -51,8 +51,8 @@
     "company": "Novillex",
     "role": "Software Developer Intern",
     "description": [
-      "Developed scalable, modular UI components for critical banking workflows using React and TypeScript.",
-      "Engineered robust data integration layers and enforced strict type safety to reduce runtime errors."
+      "Built modular, scalable UI for core banking flows in React and TypeScript.",
+      "Shaped solid data layers with strict types to cut runtime errors."
     ],
     "startDate": "2025-06",
     "endDate": "2025-11",
