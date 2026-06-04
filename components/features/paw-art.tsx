@@ -18,7 +18,7 @@ type PawArtProps = {
   className?: string;
 };
 
-const PawArt = ({ className = "" }: PawArtProps) => {
+const PawArt = ({ className }: PawArtProps) => {
   return (
     <>
       <style>{`
