@@ -32,16 +32,16 @@ const About = () => {
           </span>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <span className="text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
-          <span className="text-foreground/75">
+          <span className="text-foreground/75 text-balance w-max">
             Open to full-time / freelance.
           </span>
           <Link
             href="mailto:rohanmunot24@gmail.com"
-            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors"
+            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors pl-3.5 sm:pl-0"
           >
             Let&apos;s talk
           </Link>
