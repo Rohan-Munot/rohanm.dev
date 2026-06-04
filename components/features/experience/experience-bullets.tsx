@@ -12,11 +12,11 @@ export const ExperienceBullets = ({
   return (
     <>
       {items.length > 0 && (
-        <ul className="text-sm leading-relaxed space-y-1 text-foreground/80 tracking-tight">
+        <ul className="text-sm leading-relaxed text-foreground/80 tracking-tight">
           {items.map((point, i) => (
             <li
               key={i}
-              className="relative pl-4 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground"
+              className="relative pl-3.5 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground"
             >
               {point}
             </li>

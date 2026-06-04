@@ -10,7 +10,7 @@ const About = () => {
 
       <div className="flex flex-col gap-3 text-sm leading-relaxed">
         <div className="flex gap-2">
-          <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
+          <span className="shrink-0 font-mono text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
           <span className="text-foreground/90">
@@ -21,7 +21,7 @@ const About = () => {
         </div>
 
         <div className="flex gap-2">
-          <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
+          <span className="shrink-0 font-mono text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
           <span className="text-foreground/75">
@@ -32,8 +32,8 @@ const About = () => {
           </span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-          <span className="font-mono text-[11px] text-muted-foreground">
+        <div className="flex gap-2">
+          <span className="text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
           <span className="text-foreground/75">

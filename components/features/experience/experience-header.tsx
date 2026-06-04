@@ -4,7 +4,7 @@ import type { ExperienceItem } from "./experience-content";
 import { formatDate, formatDuration } from "./experience-utils";
 
 export const ExperienceHeader = ({ item }: { item: ExperienceItem }) => {
-  const dateRange = `${formatDate(item.startDate)} — ${
+  const dateRange = `${formatDate(item.startDate)}—${
     item.endDate ? formatDate(item.endDate) : "Present"
   }`;
   const duration = formatDuration(item.startDate, item.endDate);
@@ -13,7 +13,7 @@ export const ExperienceHeader = ({ item }: { item: ExperienceItem }) => {
     <div className="flex gap-3">
       <ExperienceLogo item={item} />
       <div className="flex-1 min-w-0 flex flex-col gap-0.5">
-        <div className="flex justify-between gap-2">
+        <div className="flex justify-between gap-2 items-center">
           {item.url ? (
             <Link
               href={item.url}
@@ -29,29 +29,19 @@ export const ExperienceHeader = ({ item }: { item: ExperienceItem }) => {
               {item.company}
             </span>
           )}
-          <span className="hidden sm:block text-xs text-muted-foreground tabular-nums shrink-0">
+          <span className="text-xs text-muted-foreground tracking-tight tabular-nums shrink-0">
             {dateRange}
           </span>
         </div>
 
-        <div className="flex justify-between gap-2">
+        <div className="flex items-center justify-between gap-2">
           <span className="text-xs text-muted-foreground truncate">
             {item.role}
           </span>
-          <span className="hidden sm:block text-xs text-muted-foreground tabular-nums shrink-0">
+          <span className="text-xs text-muted-foreground tabular-nums shrink-0">
             {duration}
           </span>
         </div>
-
-        <span className="sm:hidden mt-0.5 text-xs text-muted-foreground tabular-nums">
-          {dateRange}
-          {duration && (
-            <>
-              <span className="text-border-color"> · </span>
-              {duration}
-            </>
-          )}
-        </span>
       </div>
     </div>
   );

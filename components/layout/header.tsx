@@ -1,5 +1,6 @@
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import FlippingText from "@/components/ui/flipping-text";
+import LocalTimeChip from "@/components/ui/time-chip";
 
 const Header = () => {
   return (
@@ -20,6 +21,7 @@ const Header = () => {
         </div>
         <div className="flex flex-col items-end justify-between gap-2">
           <ThemeToggle />
+          <LocalTimeChip />
         </div>
       </div>
     </div>

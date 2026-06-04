@@ -4,43 +4,35 @@ import { useSyncExternalStore } from "react";
 
 const OWNER_TIMEZONE = "Asia/Kolkata";
 const OWNER_OFFSET_MINUTES = 330; // UTC+05:30
-const SNAPSHOT_SEPARATOR = "||";
 
 const getTimeSnapshot = () => {
   const now = new Date();
 
-  const userTime = now.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-
   const ownerTime = now.toLocaleTimeString("en-US", {
     timeZone: OWNER_TIMEZONE,
-    hour: "numeric",
+    hour: "2-digit",
     minute: "2-digit",
-    hour12: true,
+    hour12: false,
   });
 
-  const visitorOffsetMinutes = -now.getTimezoneOffset();
-  const diffMinutes = visitorOffsetMinutes - OWNER_OFFSET_MINUTES;
+  const userOffset = now.getTimezoneOffset();
+  const diffMinutes = OWNER_OFFSET_MINUTES + userOffset;
 
-  if (diffMinutes === 0) {
-    return `${userTime}${SNAPSHOT_SEPARATOR}same time${SNAPSHOT_SEPARATOR}My time: ${ownerTime}`;
+  let diff: string;
+  if (diffMinutes > 0) {
+    const h = Math.floor(diffMinutes / 60);
+    const m = diffMinutes % 60;
+    diff = `${h}h${m > 0 ? ` ${m}m` : ""} ahead`;
+  } else if (diffMinutes < 0) {
+    const abs = Math.abs(diffMinutes);
+    const h = Math.floor(abs / 60);
+    const m = abs % 60;
+    diff = `${h}h${m > 0 ? ` ${m}m` : ""} behind`;
+  } else {
+    diff = "same time";
   }
 
-  const absDiff = Math.abs(diffMinutes);
-  const hours = Math.floor(absDiff / 60);
-  const minutes = absDiff % 60;
-
-  const timeParts: string[] = [];
-  if (hours > 0) timeParts.push(`${hours}h`);
-  if (minutes > 0) timeParts.push(`${minutes}m`);
-
-  const offset = timeParts.join("");
-  const relation = diffMinutes > 0 ? `Offset (-${offset})` : `Offset (+${offset})`;
-
-  return `${userTime}${SNAPSHOT_SEPARATOR}${relation}${SNAPSHOT_SEPARATOR}My time: ${ownerTime}`;
+  return `${ownerTime}||${diff}`;
 };
 
 const subscribe = (onStoreChange: () => void) => {
@@ -55,13 +47,16 @@ const LocalTimeChip = () => {
 
   if (!snapshot) return null;
 
-  const [userTime = "", relation = ""] = snapshot.split(SNAPSHOT_SEPARATOR);
-  const display = relation ? `${userTime} | ${relation}` : userTime;
+  const [time = "", diff = ""] = snapshot.split("||");
 
   return (
-    <span className="text-xs leading-4 font-normal text-muted-foreground tracking-wide">
-      {display}
-    </span>
+    <p
+      className="text-balance text-xs font-normal text-muted-foreground/80 tracking-tight"
+      aria-label={`Local time: ${time}`}
+    >
+      <span className="text-foreground">{time}</span>
+      <span aria-hidden="true">{` // ${diff}`}</span>
+    </p>
   );
 };
 
