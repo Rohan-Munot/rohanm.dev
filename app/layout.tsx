@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script defer src="https://cloud.umami.is/script.js" data-website-id="4f722212-f4ac-4df7-9a9b-f7e6d77d6d3b"></Script>
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="4f722212-f4ac-4df7-9a9b-f7e6d77d6d3b" />
       </head>
       <body
         className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} font-sans antialiased`}
