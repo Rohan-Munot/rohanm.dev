@@ -41,7 +41,7 @@ const About = () => {
           </span>
           <Link
             href="mailto:rohanmunot24@gmail.com"
-            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors pl-3.5 sm:pl-0"
+            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors"
           >
             Let&apos;s talk
           </Link>
