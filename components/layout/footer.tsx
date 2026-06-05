@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { socials } from "@/components/features/socials";
 import { CopyrightIcon, HeartIcon, ArrowUpIcon } from "@phosphor-icons/react/dist/ssr";
+import Button from "@/components/ui/button";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -46,14 +47,14 @@ const Footer = () => {
             <CopyrightIcon className="inline-block size-3.5 align-middle" />{" "}
             {year} Rohan Munot
           </p>
-          <button
+          <Button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="gap-1 text-xs text-muted-foreground"
           >
             <span>Back to top</span>
             <ArrowUpIcon className="size-3.5" />
-          </button>
+          </Button>
         </div>
       </div>
     </footer>

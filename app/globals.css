@@ -61,6 +61,7 @@
     --shadow-2xl: 0px 40px 90px -42px hsl(30 8% 12% / 0.26);
     --tracking-normal: 0em;
     --spacing: 0.25rem;
+    --badge-inner-shadow: oklch(0.395 0.07 55 / 0.25);
     --github-0: #ebedf0;
     --github-1: #9be9a8;
     --github-2: #40c463;
@@ -69,7 +70,7 @@
 }
 
 .dark {
-    --background: oklch(0.157 0.004 49.25);
+    --background: oklch(0.1408 0.0044 285.82);
     --foreground: oklch(0.97 0.001 106.424);
     --card: oklch(0.18 0.005 56.043);
     --card-foreground: oklch(0.97 0.001 106.424);
@@ -79,7 +80,7 @@
     --primary-foreground: oklch(0.216 0.006 56.043);
     --secondary: oklch(0.268 0.007 34.298);
     --secondary-foreground: oklch(0.923 0.003 48.717);
-    --muted: oklch(0.216 0.006 56.043);
+    --muted: oklch(0.2739 0.0055 286.03);
     --muted-foreground: oklch(0.809 0.01 56.259);
     --accent: oklch(0.869 0.005 56.366);
     --accent-foreground: oklch(0.216 0.006 56.043);
@@ -127,6 +128,7 @@
         0px 8px 16px 0px hsl(30 10% 4% / 0.3),
         0px 34px 72px -36px hsl(30 10% 4% / 0.58);
     --shadow-2xl: 0px 40px 90px -42px hsl(30 10% 4% / 0.66);
+    --badge-inner-shadow: oklch(0.95 0.04 50 / 0.25);
     --github-0: #161b22;
     --github-1: #0e4429;
     --github-2: #006d32;

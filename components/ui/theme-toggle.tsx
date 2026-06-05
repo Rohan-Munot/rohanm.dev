@@ -2,6 +2,7 @@
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Button from "@/components/ui/button";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -36,22 +37,22 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button
+      <Button
         aria-label="Toggle Theme"
-        className="[&_svg]:size-4 items-start cursor-pointer rounded-md p-1 hover:bg-zinc-400/30 transition-colors"
+        className="items-start rounded-md p-1 hover:bg-zinc-400/30 [&_svg]:size-4"
       >
         <div className="size-4" />
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className="[&_svg]:size-4.5 items-start cursor-pointer rounded-md p-1 [&_svg]:text-foreground hover:bg-secondary hover:border-secondary-foreground/30 border border-transparent transition-all ease-in-out"
+      className="items-start rounded-md p-1 hover:bg-muted hover:border-secondary-foreground/30 border border-transparent transition-all ease-in-out [&_svg]:size-4.5 [&_svg]:text-foreground"
     >
       {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
-    </button>
+    </Button>
   );
 }
