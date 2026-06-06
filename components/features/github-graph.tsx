@@ -184,13 +184,13 @@ const GitHubGraph = () => {
   return (
     <div ref={containerRef} className="github-graph relative w-full">
       {showGame ? (
-        <div>
+        <div className="min-h-37.5">
           <SnakeGame rows={rows} cols={cols} onClose={() => setShowGame(false)} />
         </div>
       ) : (
         <div
           onClick={isMobile ? undefined : () => setShowGame(true)}
-          className={cn("group relative", !isMobile && "cursor-pointer")}
+          className={cn("group relative min-h-37", !isMobile && "cursor-pointer")}
           role={isMobile ? undefined : "button"}
           tabIndex={isMobile ? undefined : 0}
           onKeyDown={
@@ -203,7 +203,7 @@ const GitHubGraph = () => {
                 }
           }
         >
-            <div className="overflow-x-auto py-1">
+            <div className="overflow-x-auto py-1 no-scrollbar">
               <div className="min-w-[700px]">
                 {/* Month labels */}
                 <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">

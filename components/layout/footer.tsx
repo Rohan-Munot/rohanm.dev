@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { socials } from "@/components/features/socials";
 import { CopyrightIcon, HeartIcon, ArrowUpIcon } from "@phosphor-icons/react/dist/ssr";
+import { motion } from "motion/react";
+import Button from "@/components/ui/button";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -36,9 +38,29 @@ const Footer = () => {
             ))}
           </div>
 
-          <span className="group inline-flex items-center gap-1 text-xs text-muted-foreground">
-            Built with <HeartIcon className="size-3.5 text-muted-foreground group-hover:text-red-500 transition-colors" weight="fill" />
-          </span>
+          <motion.span
+            className="group inline-flex items-center gap-1 text-xs text-muted-foreground cursor-default"
+            initial="rest"
+            whileHover="hover"
+          >
+            Built with{" "}
+            <motion.span
+              className="inline-flex"
+              variants={{
+                rest: { scale: 1, rotate: 0 },
+                hover: {
+                  rotate: [0, -12, 10, -8, 6, -4, 2, 0],
+                  scale: [1, 1.5, 1],
+                },
+              }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+            >
+              <HeartIcon
+                className="size-3.5 text-muted-foreground group-hover:text-red-500 transition-colors"
+                weight="fill"
+              />
+            </motion.span>
+          </motion.span>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
@@ -46,14 +68,14 @@ const Footer = () => {
             <CopyrightIcon className="inline-block size-3.5 align-middle" />{" "}
             {year} Rohan Munot
           </p>
-          <button
+          <Button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="gap-1 text-xs text-muted-foreground"
           >
             <span>Back to top</span>
             <ArrowUpIcon className="size-3.5" />
-          </button>
+          </Button>
         </div>
       </div>
     </footer>

@@ -21,6 +21,53 @@ const CELL_SIZE = 12;
 const CELL_GAP = 3;
 const RENDER_FPS = 30;
 const RENDER_INTERVAL = 1000 / RENDER_FPS;
+const HIGH_SCORE_STORAGE_KEY = "snake-high-score";
+
+const readHighScore = () => {
+  if (typeof window === "undefined") return 0;
+
+  try {
+    const stored = window.sessionStorage.getItem(HIGH_SCORE_STORAGE_KEY);
+    const parsed = stored ? Number(stored) : 0;
+    return Number.isFinite(parsed) ? parsed : 0;
+  } catch {
+    return 0;
+  }
+};
+
+const writeHighScore = (score: number) => {
+  try {
+    window.sessionStorage.setItem(HIGH_SCORE_STORAGE_KEY, String(score));
+  } catch {
+    // Storage can be unavailable in private browsing or restricted contexts.
+  }
+};
+
+const clampPosition = (position: Position, cols: number, rows: number) => ({
+  x: Math.min(position.x, Math.max(cols - 1, 0)),
+  y: Math.min(position.y, Math.max(rows - 1, 0)),
+});
+
+const getInitialSnake = (cols: number, rows: number) => [
+  clampPosition({ x: 3, y: 3 }, cols, rows),
+];
+
+const positionKey = (position: Position) => `${position.x}:${position.y}`;
+
+const getFallbackFood = (currentSnake: Position[], cols: number, rows: number) => {
+  const occupied = new Set(currentSnake.map(positionKey));
+
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const position = { x, y };
+      if (!occupied.has(positionKey(position))) {
+        return position;
+      }
+    }
+  }
+
+  return currentSnake[0] ?? { x: 0, y: 0 };
+};
 
 const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -31,11 +78,16 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
   const colorProbeRef = useRef<HTMLSpanElement | null>(null);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(readHighScore);
   const [isPaused, setIsPaused] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
-  const snakeRef = useRef<Position[]>([{ x: 3, y: 3 }]);
-  const foodRef = useRef<Position>({ x: 10, y: 3 });
+  const initialSnake = getInitialSnake(cols, rows);
+  const snakeRef = useRef<Position[]>(initialSnake);
+  const foodRef = useRef<Position>(
+    getFallbackFood(initialSnake, cols, rows),
+  );
   const directionRef = useRef<Direction>("RIGHT");
+  const queuedDirectionRef = useRef<Direction>("RIGHT");
   const scoreRef = useRef(0);
   const colorsRef = useRef({
     foreground: "",
@@ -46,12 +98,22 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
 
   const generateFood = useCallback(
     (currentSnake: Position[]): Position => {
+      if (currentSnake.length >= rows * cols) {
+        return foodRef.current;
+      }
+
       let newFood: Position;
+      let attempts = 0;
       do {
         newFood = {
           x: Math.floor(Math.random() * cols),
           y: Math.floor(Math.random() * rows),
         };
+        attempts += 1;
+
+        if (attempts > 64) {
+          return getFallbackFood(currentSnake, cols, rows);
+        }
       } while (
         currentSnake.some(
           (segment) => segment.x === newFood.x && segment.y === newFood.y,
@@ -143,17 +205,39 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
   }, [canvasWidth, canvasHeight, cols, rows, cellWithGap]);
 
   const resetGame = useCallback(() => {
-    const initialSnake = [{ x: 3, y: 3 }];
-    snakeRef.current = initialSnake;
-    foodRef.current = generateFood(initialSnake);
+    const nextInitialSnake = getInitialSnake(cols, rows);
+    snakeRef.current = nextInitialSnake;
+    foodRef.current = generateFood(nextInitialSnake);
     directionRef.current = "RIGHT";
+    queuedDirectionRef.current = "RIGHT";
     setGameOver(false);
     scoreRef.current = 0;
     setScore(0);
     setIsPaused(false);
     setGameStarted(true);
     needsRenderRef.current = true;
-  }, [generateFood]);
+  }, [
+    cols,
+    rows,
+    generateFood,
+    snakeRef,
+    foodRef,
+    directionRef,
+    queuedDirectionRef,
+    scoreRef,
+    needsRenderRef,
+  ]);
+
+  useEffect(() => {
+    if (!gameOver) return;
+
+    const finalScore = scoreRef.current;
+    setHighScore((currentHighScore) => {
+      if (finalScore <= currentHighScore) return currentHighScore;
+      writeHighScore(finalScore);
+      return finalScore;
+    });
+  }, [gameOver]);
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -170,21 +254,17 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
     }
 
     const snake = snakeRef.current;
-    ctx.fillStyle = colorsRef.current.foreground70;
-    for (let i = 1; i < snake.length; i++) {
+    const isDark = document.documentElement.classList.contains("dark");
+    for (let i = 0; i < snake.length; i++) {
+      const t = snake.length > 1 ? i / (snake.length - 1) : 0;
+      const progress = isDark ? 1 - t : t;
+      const hue = 85 - progress * 30;
+      const chroma = 0.07 + progress * 0.02;
+      const lightness = 30 + progress * 28 + (isDark ? 15 : 0);
+      ctx.fillStyle = `oklch(${lightness}% ${chroma} ${hue})`;
       const segment = snake[i];
       const x = segment.x * cellWithGap;
       const y = segment.y * cellWithGap;
-      ctx.beginPath();
-      ctx.roundRect(x, y, CELL_SIZE, CELL_SIZE, 2);
-      ctx.fill();
-    }
-
-    if (snake.length > 0) {
-      ctx.fillStyle = colorsRef.current.foreground;
-      const head = snake[0];
-      const x = head.x * cellWithGap;
-      const y = head.y * cellWithGap;
       ctx.beginPath();
       ctx.roundRect(x, y, CELL_SIZE, CELL_SIZE, 2);
       ctx.fill();
@@ -194,7 +274,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
     const pulse = Math.sin(Date.now() / 300) * 0.1 + 1;
     const foodSize = CELL_SIZE * pulse;
     const offset = (CELL_SIZE - foodSize) / 2;
-    ctx.fillStyle = colorsRef.current.foreground50;
+    ctx.fillStyle = "#ef4444";
     ctx.beginPath();
     ctx.roundRect(
       food.x * cellWithGap + offset,
@@ -204,7 +284,14 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
       2
     );
     ctx.fill();
-  }, [ensureBackground, cellWithGap]);
+  }, [
+    ensureBackground,
+    cellWithGap,
+    canvasRef,
+    backgroundCanvasRef,
+    snakeRef,
+    foodRef,
+  ]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -278,7 +365,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
       };
 
       if (opposites[newDirection] !== directionRef.current) {
-        directionRef.current = newDirection;
+        queuedDirectionRef.current = newDirection;
       }
     },
     [gameOver, gameStarted, onClose, resetGame]
@@ -344,6 +431,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
 
         const snake = snakeRef.current;
         const head = snake[0];
+        directionRef.current = queuedDirectionRef.current;
         const dir = directionRef.current;
 
         const newHead: Position = {
@@ -380,8 +468,8 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
         if (newHead.x === food.x && newHead.y === food.y) {
           scoreRef.current += 1;
           setScore(scoreRef.current);
-          foodRef.current = generateFood(newSnake);
           snakeRef.current = newSnake;
+          foodRef.current = generateFood(newSnake);
           needsRenderRef.current = true;
         } else {
           newSnake.pop();
@@ -395,15 +483,9 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [gameStarted, gameOver, isPaused, cols, rows, generateFood, draw]);
 
-  useEffect(() => {
-    updateColors();
-    ensureBackground();
-    draw();
-  }, [updateColors, ensureBackground, draw]);
-
   return (
     <div className="relative w-full focus:outline-none" tabIndex={0}>
-      <div className="overflow-x-auto py-1">
+      <div className="overflow-x-auto py-1 no-scrollbar">
         <div className="min-w-[700px]">
           {/* Header */}
           <div className="h-4 mb-1 flex items-center justify-between">
@@ -411,7 +493,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
               Snake
             </span>
             <span className="text-xs text-muted-foreground">
-              Score: {score}
+              Best: {highScore} &middot; Score: {score}
             </span>
           </div>
 
@@ -430,7 +512,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
       <AnimatePresence>
         {!gameStarted && !gameOver && (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-[2px] rounded-md"
