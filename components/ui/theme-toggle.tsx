@@ -1,14 +1,13 @@
 "use client";
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/button";
-import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -32,34 +31,30 @@ export function ThemeToggle() {
 
     await transition.ready;
 
+    const button = buttonRef.current;
+    const rect = button?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+    const maxRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
     document.documentElement.animate(
-      { clipPath: ["inset(0 0 100% 0)", "inset(0)"] },
-      { duration: 400, pseudoElement: "::view-transition-new(root)" },
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 500,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(root)",
+      },
     );
   }, [resolvedTheme, setTheme]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        e.key === "d" ||
-        e.key === "D"
-      ) {
-        const target = e.target as HTMLElement;
-        if (
-          target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.isContentEditable
-        ) {
-          return;
-        }
-        e.preventDefault();
-        toggleTheme();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [toggleTheme]);
 
   if (!mounted) {
     return (
@@ -73,61 +68,15 @@ export function ThemeToggle() {
   }
 
   return (
-    <Tooltip>
-      <TooltipTrigger
-        aria-label="Toggle Theme"
-        render={
-          <Button
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="items-start rounded-md p-1 hover:bg-muted hover:border-secondary-foreground/30 border border-transparent transition-colors ease-in-out [&_svg]:size-4.5 [&_svg]:text-foreground"
-          />
-        }
-      >
-        <span className="relative inline-flex size-[18px] items-center justify-center">
-          <AnimatePresence mode="wait" initial={false}>
-            {resolvedTheme === "dark" ? (
-              <motion.span
-                key="sun"
-                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="absolute"
-              >
-                <SunIcon />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="moon"
-                initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="absolute"
-              >
-                <MoonIcon />
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </span>
-      </TooltipTrigger>
-      <TooltipPopup className="bg-foreground text-background p-2 px-3" arrowClassName="before:bg-foreground">
-        <div className="flex items-center gap-2">
-          <span>
-            Toggle Theme
-          </span>
-          <kbd
-            className="relative inline-flex h-5 min-w-[1.25rem] select-none items-center justify-center rounded-sm border border-border/50 bg-foreground px-1 font-mono text-[10px] font-medium text-background"
-          >
-            <span
-              className="absolute inset-0 rounded-[calc(var(--radius-sm)-0.5px)] shadow-[0_-1px_0_0_var(--badge-inner-shadow)] pointer-events-none"
-              aria-hidden="true"
-            />
-            D
-          </kbd>
-        </div>
-      </TooltipPopup>
-    </Tooltip>
+    <Button
+      ref={buttonRef}
+      onClick={toggleTheme}
+      aria-label="Toggle Theme"
+      className="items-start rounded-md p-1 hover:bg-muted hover:border-secondary-foreground/30 border border-transparent transition ease-in-out [&_svg]:size-4.5 [&_svg]:text-foreground active:scale-90"
+    >
+      <span className="relative inline-flex size-4.5 items-center justify-center">
+        {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+      </span>
+    </Button>
   );
 }
