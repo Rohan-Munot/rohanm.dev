@@ -46,12 +46,14 @@ const Footer = () => {
             Built with{" "}
             <motion.span
               className="inline-flex"
-              initial={{ scale: 1, rotate: 0 }}
-              animate={{ scale: 1, rotate: 0 }}
-              whileHover={{
-                rotate: [0, -12, 10, -8, 6, -4, 2, 0],
-                scale: [1, 1.5, 1],
+              variants={{
+                rest: { scale: 1, rotate: 0 },
+                hover: {
+                  rotate: [0, -12, 10, -8, 6, -4, 2, 0],
+                  scale: [1, 1.5, 1],
+                },
               }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
             >
               <HeartIcon
                 className="size-3.5 text-muted-foreground group-hover:text-red-500 transition-colors"
