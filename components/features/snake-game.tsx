@@ -485,7 +485,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
 
   return (
     <div className="relative w-full focus:outline-none" tabIndex={0}>
-      <div className="overflow-x-auto py-1">
+      <div className="overflow-x-auto py-1 no-scrollbar">
         <div className="min-w-[700px]">
           {/* Header */}
           <div className="h-4 mb-1 flex items-center justify-between">
@@ -512,7 +512,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
       <AnimatePresence>
         {!gameStarted && !gameOver && (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-[2px] rounded-md"
