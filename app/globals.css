@@ -247,52 +247,26 @@ body {
     }
 
     .dashed-border-y {
-        background-image:
-            repeating-linear-gradient(
-                to bottom,
-                var(--border-color) 0px,
-                var(--border-color) 4px,
-                transparent 4px,
-                transparent 10px
-            ),
-            repeating-linear-gradient(
-                to bottom,
-                var(--border-color) 0px,
-                var(--border-color) 4px,
-                transparent 4px,
-                transparent 10px
-            );
-        background-size:
-            1px 100%,
-            1px 100%;
-        background-position:
-            left top,
-            right top;
-        background-repeat: no-repeat;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-image: repeating-linear-gradient(
+            to bottom,
+            var(--border-color) 0px,
+            var(--border-color) 4px,
+            transparent 4px,
+            transparent 10px
+        ) 1;
     }
 
     .dashed-border-x {
-        background-image:
-            repeating-linear-gradient(
-                to right,
-                var(--border-color) 0px,
-                var(--border-color) 4px,
-                transparent 4px,
-                transparent 10px
-            ),
-            repeating-linear-gradient(
-                to right,
-                var(--border-color) 0px,
-                var(--border-color) 4px,
-                transparent 4px,
-                transparent 10px
-            );
-        background-size:
-            100% 1px,
-            100% 1px;
-        background-position:
-            top left,
-            bottom left;
-        background-repeat: no-repeat;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        border-image: repeating-linear-gradient(
+            to right,
+            var(--border-color) 0px,
+            var(--border-color) 4px,
+            transparent 4px,
+            transparent 10px
+        ) 1;
     }
 }

@@ -1,30 +1,59 @@
+"use client";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import FlippingText from "@/components/ui/flipping-text";
 import LocalTimeChip from "@/components/ui/time-chip";
 
 const Header = () => {
+  const { scrollY } = useScroll();
+
+  const fontSize   = useTransform(scrollY, [0, 40, 80], ["24px", "20px", "16px"]);
+  const paddingY   = useTransform(scrollY, [0, 40, 80], [16, 10, 4]);
+  const opacity    = useTransform(scrollY, [0, 30, 60], [1, 0.5, 0]);
+  const extraHeight = useTransform(scrollY, [0, 40, 80], [24, 12, 0]);
+  const marginTop  = useTransform(scrollY, [0, 40, 80], [6, 3, 0]);
+
   return (
-    <div className="p-4 h-max w-full flex gap-3 items-end dashed-border-x mt-2 sm:mt-3">
-      <div className="flex flex-1 justify-between gap-4">
-        <div className="flex flex-col gap-1.5">
-          <span className="text-xs font-medium leading-4 text-muted-foreground">
-            Hola!, I&apos;m
-          </span>
-          <h1 className="text-2xl font-medium leading-none font-mono">
+    <motion.header
+      className="sticky top-0.5 z-50 w-full flex dashed-border-x mt-2 sm:mt-3 bg-background/80 backdrop-blur-lg"
+      style={{
+        paddingTop: paddingY,
+        paddingBottom: paddingY,
+        paddingLeft: 16,
+        paddingRight: 16,
+      }}
+    >
+      <div className="flex flex-1 gap-4 justify-between items-center">
+        <div className="flex flex-col">
+          <motion.h1
+            style={{ fontSize }}
+            className="font-medium leading-none font-mono whitespace-nowrap"
+          >
             Rohan Munot
-          </h1>
-          <FlippingText
-            texts={["Frontend Developer", "Software Engineer", "Freelancer"]}
-            interval={2000}
-            className="text-sm leading-4 font-normal text-muted-foreground tracking-tight"
-          />
+          </motion.h1>
+          <motion.div
+            className="overflow-hidden"
+            style={{ marginTop, opacity, height: extraHeight }}
+          >
+            <FlippingText
+              texts={["Frontend Developer", "Software Engineer", "Freelancer"]}
+              interval={2000}
+              className="text-sm leading-4 font-normal text-muted-foreground tracking-tight"
+            />
+          </motion.div>
         </div>
-        <div className="flex flex-col items-end justify-between gap-2">
+
+        <div className="flex flex-col items-end justify-between">
           <ThemeToggle />
-          <LocalTimeChip />
+          <motion.div
+            className="overflow-hidden"
+            style={{ marginTop, opacity, height: extraHeight }}
+          >
+            <LocalTimeChip />
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.header>
   );
 };
 
