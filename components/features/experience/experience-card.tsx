@@ -1,11 +1,11 @@
 "use client";
 
-import type { ExperienceItem } from "./experience-content";
-import { ExperiencePopover } from "./experience-popover";
-import { ExperienceHeader } from "./experience-header";
-import { Badge } from "@/components/ui/badge";
+import type { ExperienceItem } from "@/lib/types";
+import ExperiencePopover from "./experience-popover";
+import ExperienceHeader from "./experience-header";
+import Badge from "@/components/ui/badge";
 
-export const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
+const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
   return (
     <div className="not-last:**:data-experience-card:border-b not-last:**:data-experience-card:border-dashed not-last:**:data-experience-card:border-border">
       <ExperiencePopover item={item}>
@@ -26,3 +26,5 @@ export const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
     </div>
   );
 };
+
+export default ExperienceCard;

@@ -25,7 +25,7 @@ const About = () => {
             ~
           </span>
           <span className="text-foreground/75">
-            I&apos;ve woked with freelance clients, had 3 Startup internships. Currently at{" "}
+            I&apos;ve worked with freelance clients, had 3 Startup internships. Currently at{" "}
             <Link href={'https://www.clinikally.com/'} className="text-foreground underline underline-offset-4 font-semibold">
               Clinikally
             </Link>

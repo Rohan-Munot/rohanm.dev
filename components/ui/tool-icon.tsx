@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
-import { CodeIcon } from "@phosphor-icons/react/dist/ssr";
+import { CodeIcon } from "@phosphor-icons/react/ssr";
 import {
   IconBrandCss3,
   IconBrandFigma,
@@ -96,7 +96,7 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   CursorAsset: IconCursorAsset,
 };
 
-export const ToolIcon = ({
+const ToolIcon = ({
   name,
   className,
 }: {
@@ -111,3 +111,5 @@ export const ToolIcon = ({
     <CodeIcon className={className} />
   );
 };
+
+export default ToolIcon;

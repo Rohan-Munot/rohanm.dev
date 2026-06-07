@@ -484,7 +484,7 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
   }, [gameStarted, gameOver, isPaused, cols, rows, generateFood, draw]);
 
   return (
-    <div className="relative w-full focus:outline-none" tabIndex={0}>
+    <div className="relative w-full focus:outline-none">
       <div className="overflow-x-auto py-1 no-scrollbar">
         <div className="min-w-[700px]">
           {/* Header */}

@@ -1,4 +1,4 @@
-import { ArrowBendDoubleUpRightIcon } from "@phosphor-icons/react/dist/ssr";
+import { ArrowBendDoubleUpRightIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";

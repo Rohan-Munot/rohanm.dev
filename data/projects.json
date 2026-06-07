@@ -20,7 +20,7 @@
   {
     "id": "inset-ui",
     "name": "Inset UI",
-    "description": "A modular component library compatible with Shadcn resgistry, built using Radix UI and Tailwind CSS.",
+    "description": "A modular component library compatible with Shadcn registry, built using Radix UI and Tailwind CSS.",
     "url": "https://ui.rohanm.dev/",
     "github": null,
     "tools": ["Radix UI", "Tailwind CSS"],
@@ -29,7 +29,7 @@
   {
     "id": "arthatan",
     "name": "Arthatan",
-    "description": "Landing page for a financial services company with modern and minial design.",
+    "description": "Landing page for a financial services company with modern and minimal design.",
     "url": "https://arthatan.vercel.app",
     "github": null,
     "tools": ["Next.js", "Tailwind CSS", "Shadcn UI", "Motion"],

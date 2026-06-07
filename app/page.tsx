@@ -2,7 +2,7 @@ import Header from "@/components/layout/header";
 import About from "@/components/features/about";
 import Socials from "@/components/features/socials";
 import GitHubGraph from "@/components/features/github-graph";
-import { ExperienceCard } from "@/components/features/experience/experience-card";
+import ExperienceCard from "@/components/features/experience/experience-card";
 import ToolsFlex from "@/components/features/tools-flex";
 import Projects from "@/components/features/projects";
 import Section from "@/components/layout/section";

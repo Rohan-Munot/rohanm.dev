@@ -1,17 +1,17 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import ThemeToggle from "@/components/ui/theme-toggle";
 import FlippingText from "@/components/ui/flipping-text";
 import LocalTimeChip from "@/components/ui/time-chip";
 
 const Header = () => {
   const { scrollY } = useScroll();
 
-  const fontSize = useTransform(scrollY, [0, 40, 80], ["24px", "20px", "16px"]);
-  const paddingY = useTransform(scrollY, [0, 40, 80], [16, 10, 4]);
-  const opacity = useTransform(scrollY, [0, 30, 60], [1, 0.5, 0]);
-  const extraHeight = useTransform(scrollY, [0, 40, 80], [24, 12, 0]);
-  const marginTop = useTransform(scrollY, [0, 40, 80], [6, 3, 0]);
+  const fontSize = useTransform(scrollY, [0, 75, 150], ["24px", "20px", "16px"]);
+  const paddingY = useTransform(scrollY, [0, 75, 150], [16, 10, 4]);
+  const opacity = useTransform(scrollY, [0, 60, 120], [1, 0.5, 0]);
+  const extraHeight = useTransform(scrollY, [0, 75, 150], [24, 12, 0]);
+  const marginTop = useTransform(scrollY, [0, 75, 150], [6, 3, 0]);
 
   return (
     <motion.header

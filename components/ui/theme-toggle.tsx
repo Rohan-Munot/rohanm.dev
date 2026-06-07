@@ -1,10 +1,10 @@
 "use client";
-import { MoonIcon, SunIcon } from "@phosphor-icons/react";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react/ssr";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/button";
 
-export function ThemeToggle() {
+const ThemeToggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -79,4 +79,6 @@ export function ThemeToggle() {
       </span>
     </Button>
   );
-}
+};
+
+export default ThemeToggle;

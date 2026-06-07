@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { ToolIcon } from "@/components/ui/tool-icon";
+import Badge from "@/components/ui/badge";
+import ToolIcon from "@/components/ui/tool-icon";
 import type { Tool } from "@/lib/types";
 
 interface ToolBadgeProps {

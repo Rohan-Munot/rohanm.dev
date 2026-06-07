@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
+import Badge from "@/components/ui/badge";
 
-export const ExperienceBullets = ({
+const ExperienceBullets = ({
   items,
   tools,
   showTools = true,
@@ -36,3 +36,5 @@ export const ExperienceBullets = ({
     </>
   );
 };
+
+export default ExperienceBullets;

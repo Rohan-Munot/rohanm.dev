@@ -1,7 +1,7 @@
 import Image from "next/image";
-import type { ExperienceItem } from "./experience-content";
+import type { ExperienceItem } from "@/lib/types";
 
-export const ExperienceLogo = ({ item }: { item: ExperienceItem }) => (
+const ExperienceLogo = ({ item }: { item: ExperienceItem }) => (
   <div className="h-10.25 w-10.25 aspect-square rounded-sm overflow-hidden shrink-0 border border-border/40 flex items-center justify-center bg-white p-0.5">
     {item.logo ? (
       <Image
@@ -18,3 +18,5 @@ export const ExperienceLogo = ({ item }: { item: ExperienceItem }) => (
     )}
   </div>
 );
+
+export default ExperienceLogo;

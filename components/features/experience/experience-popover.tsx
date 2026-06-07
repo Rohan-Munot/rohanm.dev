@@ -1,11 +1,11 @@
 import { Popover } from "@base-ui/react/popover";
-import { XIcon } from "@phosphor-icons/react/dist/ssr";
+import { XIcon } from "@phosphor-icons/react/ssr";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import type { ExperienceItem } from "./experience-content";
-import { ExperienceBullets } from "./experience-bullets";
+import type { ExperienceItem } from "@/lib/types";
+import ExperienceBullets from "./experience-bullets";
 
-export const ExperiencePopover = ({
+const ExperiencePopover = ({
   item,
   children,
 }: {
@@ -60,3 +60,5 @@ export const ExperiencePopover = ({
     </Popover.Root>
   );
 };
+
+export default ExperiencePopover;

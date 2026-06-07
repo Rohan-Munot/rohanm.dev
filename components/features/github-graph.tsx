@@ -31,7 +31,7 @@ const getContributionLevel = (count: number): number => {
   return 4;
 };
 
-const formatDate = (dateString: string): string => {
+const formatDay = (dateString: string): string => {
   return format(parse(dateString, "yyyy-MM-dd", new Date()), "EEE, MMM d, yyyy");
 };
 
@@ -265,7 +265,7 @@ const GitHubGraph = () => {
                 </span>
                 <span className="text-muted-foreground">
                   {" "}
-                  on {formatDate(tooltip.date)}
+                  on {formatDay(tooltip.date)}
                 </span>
               </div>
             )}
@@ -289,7 +289,7 @@ const GitHubGraph = () => {
 
             {/* Click me hint - hidden on mobile */}
             {!isMobile && (
-              <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5">
+              <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5 z-20">
                 <span className="text-xs text-muted-foreground font-medium tracking-wide">
                   click
                 </span>

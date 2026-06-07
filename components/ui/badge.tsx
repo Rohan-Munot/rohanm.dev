@@ -27,5 +27,5 @@ const Badge = ({ render, className, ...props }: BadgeProps) => {
   return element;
 };
 
-export { Badge };
+export default Badge;
 export type { BadgeProps };

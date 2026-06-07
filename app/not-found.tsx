@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import ThemeToggle from "@/components/ui/theme-toggle";
 import BackButton from "@/components/ui/back-button";
 import Footer from "@/components/layout/footer";
 
