@@ -25,12 +25,7 @@ export function ThemeToggle() {
       return;
     }
 
-    const transition = document.startViewTransition(() => {
-      setTheme(newTheme);
-    });
-
-    await transition.ready;
-
+    // Capture button position synchronously before any async work
     const button = buttonRef.current;
     const rect = button?.getBoundingClientRect();
     const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
@@ -40,20 +35,31 @@ export function ThemeToggle() {
       Math.max(y, window.innerHeight - y),
     );
 
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 500,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    try {
+      await transition.ready;
+
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${maxRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 500,
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+          fill: "forwards",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      );
+    } catch {
+      // Fallback: if transition fails, just set the theme
+      setTheme(newTheme);
+    }
   }, [resolvedTheme, setTheme]);
 
   if (!mounted) {
