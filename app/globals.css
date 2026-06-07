@@ -218,6 +218,7 @@ body {
 
 ::view-transition-new(root) {
     z-index: 1;
+    clip-path: circle(0px at center);
 }
 
 @layer utilities {
@@ -246,27 +247,50 @@ body {
         padding-bottom: calc(var(--underline-offset) + 1px);
     }
 
-    .dashed-border-y {
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-        border-image: repeating-linear-gradient(
+    :where(.dashed-border-y) {
+        position: relative;
+    }
+    .dashed-border-y::before,
+    .dashed-border-y::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        z-index: 12;
+        background: repeating-linear-gradient(
             to bottom,
-            var(--border-color) 0px,
-            var(--border-color) 4px,
-            transparent 4px,
-            transparent 10px
-        ) 1;
+            var(--border-color) 0 4px,
+            transparent 4px 10px
+        );
+    }
+    .dashed-border-y::before {
+        left: 0;
+    }
+    .dashed-border-y::after {
+        right: 0;
     }
 
-    .dashed-border-x {
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparent;
-        border-image: repeating-linear-gradient(
+    :where(.dashed-border-x) {
+        position: relative;
+    }
+    .dashed-border-x::before,
+    .dashed-border-x::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: repeating-linear-gradient(
             to right,
-            var(--border-color) 0px,
-            var(--border-color) 4px,
-            transparent 4px,
-            transparent 10px
-        ) 1;
+            var(--border-color) 0 4px,
+            transparent 4px 10px
+        );
+    }
+    .dashed-border-x::before {
+        top: 0;
+    }
+    .dashed-border-x::after {
+        bottom: 0;
     }
 }

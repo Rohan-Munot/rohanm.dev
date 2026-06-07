@@ -25,7 +25,6 @@ export function ThemeToggle() {
       return;
     }
 
-    // Capture button position synchronously before any async work
     const button = buttonRef.current;
     const rect = button?.getBoundingClientRect();
     const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
@@ -39,28 +38,23 @@ export function ThemeToggle() {
       setTheme(newTheme);
     });
 
-    try {
-      await transition.ready;
+    await transition.ready;
 
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${maxRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: 500,
-          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-          fill: "forwards",
-          pseudoElement: "::view-transition-new(root)",
-        },
-      );
-    } catch {
-      // Fallback: if transition fails, just set the theme
-      setTheme(newTheme);
-    }
-  }, [resolvedTheme, setTheme]);
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 500,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(root)",
+      },
+    );
+  }, [resolvedTheme, setTheme]); // ← this was missing
 
   if (!mounted) {
     return (
