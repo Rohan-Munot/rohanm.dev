@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className="sticky top-0.5 z-10 w-full flex dashed-border-x mt-2 sm:mt-3 backdrop-blur-lg bg-background/70"
+      className="sticky top-0 z-10 w-full flex dashed-border-x mt-2 sm:mt-3 backdrop-blur-lg bg-background/70"
       style={{
         paddingTop: paddingY,
         paddingBottom: paddingY,
