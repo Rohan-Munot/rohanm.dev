@@ -1,7 +1,4 @@
-import { formatDate } from "@/lib/utils";
-import { parse, intervalToDuration } from "date-fns";
-
-export { formatDate };
+import { parse, intervalToDuration, format } from "date-fns";
 
 export const formatDuration = (startDate: string, endDate: string | null): string => {
   const start = parse(startDate, "yyyy-MM", new Date());
@@ -17,4 +14,9 @@ export const formatDuration = (startDate: string, endDate: string | null): strin
   }
 
   return parts.join(" ");
+};
+
+
+export const formatDate = (dateString: string): string => {
+  return format(parse(dateString, "yyyy-MM", new Date()), "MM.yy");
 };

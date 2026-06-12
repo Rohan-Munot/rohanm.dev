@@ -12,12 +12,14 @@ import {
 
 const ExperienceCard = ({
   item,
+  defaultOpen = false,
 }: {
   item: ExperienceItem;
+  defaultOpen?: boolean;
 }) => {
   return (
     <div className="not-last:**:data-experience-card:border-b not-last:**:data-experience-card:border-dashed not-last:**:data-experience-card:border-border select-none">
-      <Collapsible>
+      <Collapsible defaultOpen={defaultOpen}>
         <CollapsibleTrigger
           nativeButton={false}
           render={
@@ -27,7 +29,7 @@ const ExperienceCard = ({
             >
               <ExperienceHeader item={item} />
               <CollapsiblePanel>
-                <div className="pl-13.5">
+                <div className="sm:pl-13.5">
                   <ExperienceBullets
                     items={item.description}
                     tools={item.tools}
@@ -36,7 +38,7 @@ const ExperienceCard = ({
                 </div>
               </CollapsiblePanel>
               {item.tools && item.tools.length > 0 && (
-                <div className="flex gap-1.5 flex-wrap pl-13.5">
+                <div className="flex gap-1.5 flex-wrap sm:pl-13.5">
                   {item.tools.map((tool, index) => (
                     <Badge key={index}>{tool}</Badge>
                   ))}
