@@ -3,7 +3,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { format, parse } from "date-fns";
 import { cn } from "@/lib/utils";
-import SnakeGame from "./snake-game";
+import SnakeGame from "@/components/snake-game";
 import { CursorClickIcon } from "@phosphor-icons/react/ssr";
 
 interface ContributionDay {
@@ -48,7 +48,6 @@ const GitHubGraph = () => {
   const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
-    // Check for mobile/touch device
     const checkMobile = () => {
       setIsMobile(
         window.matchMedia("(max-width: 768px)").matches ||
@@ -139,13 +138,11 @@ const GitHubGraph = () => {
 
   if (!data) return null;
 
-  // Group contributions into weeks (7 days each)
   const weeks: ContributionDay[][] = [];
   for (let i = 0; i < data.contributions.length; i += 7) {
     weeks.push(data.contributions.slice(i, i + 7));
   }
 
-  // Get month labels with their starting week index
   const getMonthLabels = (): { month: string; weekIndex: number }[] => {
     const months: { month: string; weekIndex: number }[] = [];
     let lastMonth = "";
@@ -166,7 +163,6 @@ const GitHubGraph = () => {
 
   const monthLabels = getMonthLabels();
 
-  // Calculate grid dimensions for snake game (matches contribution grid)
   const cols = weeks.length;
   const rows = 7;
 
@@ -205,7 +201,6 @@ const GitHubGraph = () => {
         >
             <div className="overflow-x-auto py-1 no-scrollbar">
               <div className="min-w-[700px]">
-                {/* Month labels */}
                 <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">
                   {weeks.map((_, weekIndex) => {
                     const monthLabel = monthLabels.find(
@@ -222,7 +217,6 @@ const GitHubGraph = () => {
                   })}
                 </div>
 
-                {/* Contribution grid */}
                 <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
                   {weeks.map((week, weekIndex) => (
                     <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
@@ -245,7 +239,6 @@ const GitHubGraph = () => {
               </div>
             </div>
 
-            {/* Tooltip */}
             {tooltip && (
               <div
                 ref={tooltipRef}
@@ -287,7 +280,6 @@ const GitHubGraph = () => {
               </div>
             </div>
 
-            {/* Click me hint - hidden on mobile */}
             {!isMobile && (
               <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5 z-20">
                 <span className="text-xs text-muted-foreground font-medium tracking-wide">

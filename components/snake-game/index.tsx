@@ -39,7 +39,6 @@ const writeHighScore = (score: number) => {
   try {
     window.sessionStorage.setItem(HIGH_SCORE_STORAGE_KEY, String(score));
   } catch {
-    // Storage can be unavailable in private browsing or restricted contexts.
   }
 };
 
@@ -487,7 +486,6 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
     <div className="relative w-full focus:outline-none">
       <div className="overflow-x-auto py-1 no-scrollbar">
         <div className="min-w-[700px]">
-          {/* Header */}
           <div className="h-4 mb-1 flex items-center justify-between">
             <span className="text-xs text-muted-foreground font-medium">
               Snake
@@ -497,7 +495,6 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
             </span>
           </div>
 
-          {/* Game canvas */}
           <canvas
             ref={canvasRef}
             width={canvasWidth}
@@ -508,7 +505,6 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
         </div>
       </div>
 
-      {/* Overlays */}
       <AnimatePresence>
         {!gameStarted && !gameOver && (
           <motion.div
@@ -568,7 +564,6 @@ const SnakeGame = ({ rows, cols, onClose }: SnakeGameProps) => {
         )}
       </AnimatePresence>
 
-      {/* Footer */}
       <div className="flex items-center justify-between mt-2">
         <span className="text-xs font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
           Esc to exit

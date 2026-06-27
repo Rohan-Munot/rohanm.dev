@@ -7,7 +7,7 @@ import {
   ArrowUpIcon,
 } from "@phosphor-icons/react/ssr";
 import { motion } from "motion/react";
-import { socials } from "@/components/features/socials";
+import { socials } from "@/components/socials";
 import {
   TooltipProvider,
   Tooltip,

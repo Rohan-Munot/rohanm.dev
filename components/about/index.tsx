@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import PawArt from "./paw-art";
+import PawArt from "@/components/paw-art";
+import { Highlight } from "@/components/ui/highlight-text";
 
 const About = () => {
   return (
@@ -14,9 +15,11 @@ const About = () => {
             ~
           </span>
           <span className="text-foreground/90">
-            I&apos;m Rohan — Frontend Engineer with 1.5+ years of experience, who
-            loves building products that are clean and intuitive, with focus on
-            details and design.
+            I&apos;m Rohan — Frontend Engineer with 1.5+ years of experience,
+            who loves building products that are clean and intuitive,{" "}
+            <Highlight color="#fbcfe8" angle={1.2} startOpacity={0.25}>
+              with focus on details and design.
+            </Highlight>
           </span>
         </div>
 
@@ -25,17 +28,19 @@ const About = () => {
             ~
           </span>
           <span className="text-foreground/75">
-            I&apos;ve worked with freelance clients, had 3 Startup internships. Currently at{" "}
-            <Link href={'https://www.clinikally.com/'} className="text-foreground underline underline-offset-4 font-semibold">
+            I&apos;ve worked with freelance clients, had 3 Startup internships.
+            Currently at{" "}
+            <Link
+              href={"https://www.clinikally.com/"}
+              className="text-foreground underline underline-offset-4 font-semibold"
+            >
               Clinikally
             </Link>
           </span>
         </div>
 
         <div className="flex flex-wrap gap-2 gap-y-0">
-          <span className="text-[11px] text-muted-foreground mt-0.5">
-            ~
-          </span>
+          <span className="text-[11px] text-muted-foreground mt-0.5">~</span>
           <span className="text-foreground/75 text-balance w-max">
             Open to full-time / freelance.
           </span>
