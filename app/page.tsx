@@ -11,7 +11,6 @@ import JsonLd from "@/components/seo/json-ld";
 import experienceData from "@/data/experience.json";
 import toolsData from "@/data/tools.json";
 import projectsData from "@/data/projects.json";
-import ComponentsSection from "@/components/components-section";
 
 const Page = () => {
   return (
@@ -26,9 +25,6 @@ const Page = () => {
           <Section label="Socials">
             <Socials />
             <GitHubGraph />
-          </Section>
-          <Section label="Components">
-            <ComponentsSection />
           </Section>
           <Section label="Tools">
             <Tools data={toolsData} />

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import PawArt from "@/components/paw-art";
-import { Highlight } from "@/components/ui/highlight-text";
 
 const About = () => {
   return (
@@ -16,10 +15,8 @@ const About = () => {
           </span>
           <span className="text-foreground/90">
             I&apos;m Rohan — Frontend Engineer with 1.5+ years of experience,
-            who loves building products that are clean and intuitive,{" "}
-            <Highlight color="#fbcfe8" angle={1.2} startOpacity={0.25}>
-              with focus on details and design.
-            </Highlight>
+            who loves building products that are clean and intuitive, with focus
+            on details and design.
           </span>
         </div>
 
