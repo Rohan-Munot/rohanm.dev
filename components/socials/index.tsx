@@ -1,10 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Badge from "@/components/ui/badge";
+import { useCopy } from "@/lib/use-copy";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
 } from "@tabler/icons-react";
+
+export const EMAIL = "rohanmunot24@gmail.com";
 
 export const socials = [
   {
@@ -17,14 +22,11 @@ export const socials = [
     href: "https://linkedin.com/in/rohan-munot",
     icon: IconBrandLinkedin,
   },
-  {
-    name: "Email",
-    href: "mailto:rohanmunot24@gmail.com",
-    icon: IconMail,
-  },
 ];
 
 const Socials = () => {
+  const { copied, copy } = useCopy();
+
   return (
     <div className="flex flex-wrap gap-2">
       {socials.map((social) => (
@@ -33,12 +35,8 @@ const Socials = () => {
           render={
             <Link
               href={social.href}
-              target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={
-                social.href.startsWith("mailto:")
-                  ? undefined
-                  : "noopener noreferrer"
-              }
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
             />
           }
@@ -47,6 +45,18 @@ const Socials = () => {
           {social.name}
         </Badge>
       ))}
+      <Badge
+        render={
+          <button
+            type="button"
+            onClick={() => copy(EMAIL)}
+            className="hover:text-foreground transition-colors cursor-pointer"
+          />
+        }
+      >
+        <IconMail />
+        {copied ? "Copied!" : "Email"}
+      </Badge>
     </div>
   );
 };

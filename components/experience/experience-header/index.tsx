@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { formatDate, formatDuration } from "./experience-utils";
-import ExperienceLogo from "./experience-logo";
+import {
+  formatDate,
+  formatDuration,
+} from "@/components/experience/experience-utils";
+import ExperienceLogo from "@/components/experience/experience-logo";
 import type { ExperienceItem } from "@/lib/types";
 
 const ExperienceHeader = ({ item }: { item: ExperienceItem }) => {
-  const dateRange = `${formatDate(item.startDate)} — ${item.endDate ? formatDate(item.endDate) : "Present"
-    }`;
+  const dateRange = `${formatDate(item.startDate)} — ${
+    item.endDate ? formatDate(item.endDate) : "Present"
+  }`;
   const duration = formatDuration(item.startDate, item.endDate);
 
   return (

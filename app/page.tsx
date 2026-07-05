@@ -1,10 +1,10 @@
 import Header from "@/components/layout/header";
-import About from "@/components/features/about";
-import Socials from "@/components/features/socials";
-import GitHubGraph from "@/components/features/github-graph";
-import ExperienceCard from "@/components/features/experience/experience-card";
-import ToolsFlex from "@/components/features/tools-flex";
-import Projects from "@/components/features/projects";
+import About from "@/components/about";
+import Socials from "@/components/socials";
+import GitHubGraph from "@/components/github-graph";
+import ExperienceCard from "@/components/experience/experience-card";
+import Tools from "@/components/tools";
+import Projects from "@/components/projects";
 import Section from "@/components/layout/section";
 import Footer from "@/components/layout/footer";
 import JsonLd from "@/components/seo/json-ld";
@@ -17,7 +17,7 @@ const Page = () => {
     <>
       <JsonLd />
       <main className="min-h-screen flex justify-center relative mx-2">
-        <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono *:last:mb-2 *:last:sm:mb-3">
+        <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-8 font-mono *:last:mb-2 *:last:sm:mb-3">
           <Header />
           <Section label="Hello">
             <About />
@@ -27,7 +27,7 @@ const Page = () => {
             <GitHubGraph />
           </Section>
           <Section label="Tools">
-            <ToolsFlex data={toolsData} />
+            <Tools data={toolsData} />
           </Section>
           <Section label="Experiences" link="/work" linkLabel="Details">
             <div className="flex flex-col">

@@ -27,7 +27,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div className="group border-t border-border border-dashed py-4 first:border-t-0 first:pt-0 last:pb-0">
       <div className="flex flex-col gap-3">
-        {/* Title + Links */}
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-medium text-foreground">
             {project.name}
@@ -61,14 +60,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </div>
         </div>
 
-        {/* Tools */}
         <div className="flex flex-wrap gap-1.5">
           {project.tools.map((tool) => (
             <Badge key={tool}>{tool}</Badge>
           ))}
         </div>
 
-        {/* Description */}
         <p className="text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>

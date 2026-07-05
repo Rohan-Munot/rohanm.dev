@@ -5,9 +5,12 @@ import {
   CopyrightIcon,
   HeartIcon,
   ArrowUpIcon,
+  CheckCircleIcon,
 } from "@phosphor-icons/react/ssr";
+import { IconMail } from "@tabler/icons-react";
 import { motion } from "motion/react";
-import { socials } from "@/components/features/socials";
+import { socials, EMAIL } from "@/components/socials";
+import { useCopy } from "@/lib/use-copy";
 import {
   TooltipProvider,
   Tooltip,
@@ -18,6 +21,7 @@ import Button from "@/components/ui/button";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { copied, copy } = useCopy();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -36,16 +40,8 @@ const Footer = () => {
                     render={
                       <Link
                         href={social.href}
-                        target={
-                          social.href.startsWith("mailto:")
-                            ? undefined
-                            : "_blank"
-                        }
-                        rel={
-                          social.href.startsWith("mailto:")
-                            ? undefined
-                            : "noopener noreferrer"
-                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center p-1 text-foreground"
                         aria-label={social.name}
                       />
@@ -56,6 +52,25 @@ const Footer = () => {
                   <TooltipContent>{social.name}</TooltipContent>
                 </Tooltip>
               ))}
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <button
+                      type="button"
+                      onClick={() => copy(EMAIL)}
+                      className="inline-flex items-center justify-center p-1 text-foreground"
+                      aria-label="Email"
+                    />
+                  }
+                >
+                  {copied ? (
+                    <CheckCircleIcon className="size-4.5" />
+                  ) : (
+                    <IconMail className="size-4.5" />
+                  )}
+                </TooltipTrigger>
+                <TooltipContent>Copy Email</TooltipContent>
+              </Tooltip>
             </div>
           </TooltipProvider>
 

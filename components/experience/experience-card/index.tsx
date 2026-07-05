@@ -1,8 +1,8 @@
 "use client";
 
 import type { ExperienceItem } from "@/lib/types";
-import ExperienceBullets from "./experience-bullets";
-import ExperienceHeader from "./experience-header";
+import ExperienceBullets from "@/components/experience/experience-bullets";
+import ExperienceHeader from "@/components/experience/experience-header";
 import Badge from "@/components/ui/badge";
 import {
   Collapsible,

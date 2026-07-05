@@ -3,8 +3,9 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { format, parse } from "date-fns";
 import { cn } from "@/lib/utils";
-import SnakeGame from "./snake-game";
+import SnakeGame from "@/components/snake-game";
 import { CursorClickIcon } from "@phosphor-icons/react/ssr";
+import { SpinnerIcon } from "@phosphor-icons/react";
 
 interface ContributionDay {
   date: string;
@@ -32,7 +33,10 @@ const getContributionLevel = (count: number): number => {
 };
 
 const formatDay = (dateString: string): string => {
-  return format(parse(dateString, "yyyy-MM-dd", new Date()), "EEE, MMM d, yyyy");
+  return format(
+    parse(dateString, "yyyy-MM-dd", new Date()),
+    "EEE, MMM d, yyyy",
+  );
 };
 
 const GitHubGraph = () => {
@@ -48,12 +52,11 @@ const GitHubGraph = () => {
   const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
-    // Check for mobile/touch device
     const checkMobile = () => {
       setIsMobile(
         window.matchMedia("(max-width: 768px)").matches ||
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0,
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0,
       );
     };
     checkMobile();
@@ -120,11 +123,8 @@ const GitHubGraph = () => {
 
   if (loading) {
     return (
-      <div className="w-full p-4">
-        <div className="animate-pulse flex flex-col gap-2">
-          <div className="h-4 bg-muted rounded w-32" />
-          <div className="h-24 bg-muted rounded" />
-        </div>
+      <div className="w-full h-38 flex justify-center items-center p-4">
+        <SpinnerIcon className="animate-spin" />
       </div>
     );
   }
@@ -139,13 +139,11 @@ const GitHubGraph = () => {
 
   if (!data) return null;
 
-  // Group contributions into weeks (7 days each)
   const weeks: ContributionDay[][] = [];
   for (let i = 0; i < data.contributions.length; i += 7) {
     weeks.push(data.contributions.slice(i, i + 7));
   }
 
-  // Get month labels with their starting week index
   const getMonthLabels = (): { month: string; weekIndex: number }[] => {
     const months: { month: string; weekIndex: number }[] = [];
     let lastMonth = "";
@@ -166,7 +164,6 @@ const GitHubGraph = () => {
 
   const monthLabels = getMonthLabels();
 
-  // Calculate grid dimensions for snake game (matches contribution grid)
   const cols = weeks.length;
   const rows = 7;
 
@@ -177,7 +174,7 @@ const GitHubGraph = () => {
     const half = tooltipWidth / 2;
     return Math.min(
       Math.max(tooltip.x, padding + half),
-      containerWidth - padding - half
+      containerWidth - padding - half,
     );
   })();
 
@@ -185,12 +182,19 @@ const GitHubGraph = () => {
     <div ref={containerRef} className="github-graph relative w-full">
       {showGame ? (
         <div className="min-h-37.5">
-          <SnakeGame rows={rows} cols={cols} onClose={() => setShowGame(false)} />
+          <SnakeGame
+            rows={rows}
+            cols={cols}
+            onClose={() => setShowGame(false)}
+          />
         </div>
       ) : (
         <div
           onClick={isMobile ? undefined : () => setShowGame(true)}
-          className={cn("group relative min-h-37", !isMobile && "cursor-pointer")}
+          className={cn(
+            "group relative min-h-37",
+            !isMobile && "cursor-pointer",
+          )}
           role={isMobile ? undefined : "button"}
           tabIndex={isMobile ? undefined : 0}
           onKeyDown={
@@ -203,99 +207,93 @@ const GitHubGraph = () => {
                 }
           }
         >
-            <div className="overflow-x-auto py-1 no-scrollbar">
-              <div className="min-w-[700px]">
-                {/* Month labels */}
-                <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">
-                  {weeks.map((_, weekIndex) => {
-                    const monthLabel = monthLabels.find(
-                      (m) => m.weekIndex === weekIndex,
-                    );
-                    return (
-                      <div
-                        key={weekIndex}
-                        className="text-xs text-muted-foreground"
-                      >
-                        {monthLabel ? monthLabel.month : ""}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Contribution grid */}
-                <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
-                  {weeks.map((week, weekIndex) => (
-                    <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
-                      {week.map((day) => (
-                        <div
-                          key={day.date}
-                          className={cn(
-                            "aspect-square cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
-                            getContributionClass(
-                              getContributionLevel(day.count),
-                            ),
-                          )}
-                          onMouseEnter={(e) => handleMouseEnter(e, day)}
-                          onMouseLeave={handleMouseLeave}
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Tooltip */}
-            {tooltip && (
-              <div
-                ref={tooltipRef}
-                className={cn(
-                  "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
-                  "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
-                  "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
-                )}
-                style={{
-                  left: clampedTooltipX,
-                  top: tooltip.y,
-                  transform: "translate(-50%, -100%)",
-                }}
-              >
-                <span className="font-medium">
-                  {tooltip.count} contribution{tooltip.count !== 1 ? "s" : ""}
-                </span>
-                <span className="text-muted-foreground">
-                  {" "}
-                  on {formatDay(tooltip.date)}
-                </span>
-              </div>
-            )}
-            <div className="flex items-center justify-between mt-2">
-              <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
-                {data.total} contributions last year
-              </span>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground">Less</span>
-                <div className="flex gap-[3px]">
-                  {[0, 1, 2, 4].map((level) => (
+          <div className="overflow-x-auto py-1 no-scrollbar">
+            <div className="min-w-[700px]">
+              <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full mb-1">
+                {weeks.map((_, weekIndex) => {
+                  const monthLabel = monthLabels.find(
+                    (m) => m.weekIndex === weekIndex,
+                  );
+                  return (
                     <div
-                      key={level}
-                      className={`size-2.5 rounded-[2px] ${getContributionClass(level)}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-xs text-muted-foreground">More</span>
+                      key={weekIndex}
+                      className="text-xs text-muted-foreground"
+                    >
+                      {monthLabel ? monthLabel.month : ""}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
+                {weeks.map((week, weekIndex) => (
+                  <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
+                    {week.map((day) => (
+                      <div
+                        key={day.date}
+                        className={cn(
+                          "aspect-square cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
+                          getContributionClass(getContributionLevel(day.count)),
+                        )}
+                        onMouseEnter={(e) => handleMouseEnter(e, day)}
+                        onMouseLeave={handleMouseLeave}
+                      />
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
 
-            {/* Click me hint - hidden on mobile */}
-            {!isMobile && (
-              <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5 z-20">
-                <span className="text-xs text-muted-foreground font-medium tracking-wide">
-                  click
-                </span>
-                <CursorClickIcon className="size-3.5" />
-                  </div>
-                )}
+          {tooltip && (
+            <div
+              ref={tooltipRef}
+              className={cn(
+                "absolute z-10 px-2 py-1 text-xs bg-popover text-popover-foreground border border-border shadow-lg pointer-events-none whitespace-nowrap rounded-sm",
+                "before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-sm)-1px)]",
+                "before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
+              )}
+              style={{
+                left: clampedTooltipX,
+                top: tooltip.y,
+                transform: "translate(-50%, -100%)",
+              }}
+            >
+              <span className="font-medium">
+                {tooltip.count} contribution{tooltip.count !== 1 ? "s" : ""}
+              </span>
+              <span className="text-muted-foreground">
+                {" "}
+                on {formatDay(tooltip.date)}
+              </span>
+            </div>
+          )}
+          <div className="flex items-center justify-between mt-2">
+            <span className="text-sm font-medium text-muted-foreground sm:tracking-normal tracking-tighter">
+              {data.total} contributions last year
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">Less</span>
+              <div className="flex gap-[3px]">
+                {[0, 1, 2, 4].map((level) => (
+                  <div
+                    key={level}
+                    className={`size-2.5 rounded-[2px] ${getContributionClass(level)}`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs text-muted-foreground">More</span>
+            </div>
+          </div>
+
+          {!isMobile && (
+            <div className="absolute left-1/2 -translate-x-1/2 -bottom-6.5 backdrop-blur-3xl border border-border p-0.5 px-1 bg-muted rounded-sm flex opacity-0 group-hover:opacity-100 items-center justify-center pointer-events-none transition-opacity duration-200 gap-1.5 z-20">
+              <span className="text-xs text-muted-foreground font-medium tracking-wide">
+                click
+              </span>
+              <CursorClickIcon className="size-3.5" />
+            </div>
+          )}
         </div>
       )}
     </div>
