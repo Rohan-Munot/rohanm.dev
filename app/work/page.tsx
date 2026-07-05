@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 const WorkPage = () => {
   return (
     <main className="min-h-screen flex justify-center relative mx-2">
-      <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-10 font-mono">
+      <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-8 font-mono">
         <div className="p-4 dashed-border-x mt-2 sm:mt-3 flex items-center justify-between">
           <BackButton />
           <ThemeToggle />
         </div>
 
-        <div className="p-4 dashed-border-x mb-2 sm:mb-3">
+        <div className="p-4 dashed-border-x">
           <div className="flex flex-col gap-2">
             <h1 className="text-xs font-medium text-muted-foreground">
               Experience
