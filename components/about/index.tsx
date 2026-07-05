@@ -33,6 +33,7 @@ const About = () => {
             Currently at{" "}
             <Link
               href={"https://www.clinikally.com/"}
+              target="_blank"
               className="text-foreground underline underline-offset-4 font-semibold"
             >
               Clinikally
