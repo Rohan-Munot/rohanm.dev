@@ -2,8 +2,12 @@
 
 import Link from "next/link";
 import PawArt from "@/components/paw-art";
+import { EMAIL } from "@/components/socials";
+import { useCopy } from "@/lib/use-copy";
 
 const About = () => {
+  const { copied, copy } = useCopy();
+
   return (
     <div className="relative flex flex-col gap-4 overflow-hidden pb-4 sm:pr-12">
       <PawArt className="absolute bottom-0 right-0" />
@@ -41,12 +45,13 @@ const About = () => {
           <span className="text-foreground/75 text-balance w-max">
             Open to full-time / freelance.
           </span>
-          <Link
-            href="mailto:rohanmunot24@gmail.com"
-            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors"
+          <button
+            type="button"
+            onClick={() => copy(EMAIL)}
+            className="font-semibold tracking-tighter text-foreground decoration-accent underline underline-offset-4 transition-colors cursor-pointer"
           >
-            Let&apos;s talk
-          </Link>
+            {copied ? "Email Copied!" : "Let's talk"}
+          </button>
         </div>
       </div>
     </div>
