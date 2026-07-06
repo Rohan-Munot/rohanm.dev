@@ -218,7 +218,6 @@ body {
 
 ::view-transition-new(root) {
     z-index: 1;
-    clip-path: circle(0px at center);
 }
 
 @layer utilities {
@@ -316,9 +315,20 @@ body {
 }
 
 @keyframes paw-wave {
-    0%, 100% { transform: rotate(0deg) translateY(0); }
-    18% { transform: rotate(-7deg) translateY(-1px); }
-    36% { transform: rotate(6deg) translateY(0); }
-    54% { transform: rotate(-5deg) translateY(-1px); }
-    72% { transform: rotate(4deg) translateY(0); }
+    0%,
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
+    18% {
+        transform: rotate(-7deg) translateY(-1px);
+    }
+    36% {
+        transform: rotate(6deg) translateY(0);
+    }
+    54% {
+        transform: rotate(-5deg) translateY(-1px);
+    }
+    72% {
+        transform: rotate(4deg) translateY(0);
+    }
 }
