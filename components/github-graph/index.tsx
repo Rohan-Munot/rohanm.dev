@@ -225,14 +225,14 @@ const GitHubGraph = () => {
                 })}
               </div>
 
-              <div className="grid grid-flow-col auto-cols-fr gap-[3px] w-full">
+              <div className="grid grid-flow-col auto-cols-fr gap-px w-full">
                 {weeks.map((week, weekIndex) => (
-                  <div key={weekIndex} className="grid grid-rows-7 gap-[3px]">
+                  <div key={weekIndex} className="grid grid-rows-7 gap-px">
                     {week.map((day) => (
                       <div
                         key={day.date}
                         className={cn(
-                          "aspect-square cursor-pointer transition-all duration-150 hover:ring-1 hover:ring-foreground/30",
+                          "aspect-square cursor-pointer transition-all duration-150 hover:scale-105",
                           getContributionClass(getContributionLevel(day.count)),
                         )}
                         onMouseEnter={(e) => handleMouseEnter(e, day)}
@@ -261,10 +261,6 @@ const GitHubGraph = () => {
             >
               <span className="font-medium">
                 {tooltip.count} contribution{tooltip.count !== 1 ? "s" : ""}
-              </span>
-              <span className="text-muted-foreground">
-                {" "}
-                on {formatDay(tooltip.date)}
               </span>
             </div>
           )}
