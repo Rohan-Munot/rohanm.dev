@@ -208,18 +208,6 @@ body {
     color: oklch(0.216 0.006 56.043);
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
-    position: fixed;
-    inset: 0;
-}
-
-::view-transition-new(root) {
-    z-index: 1;
-}
-
 @layer utilities {
     .no-scrollbar {
         -ms-overflow-style: none;

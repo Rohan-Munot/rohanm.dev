@@ -14,45 +14,8 @@ const ThemeToggle = () => {
   }, []);
 
   const toggleTheme = useCallback(async () => {
-    const currentTheme = resolvedTheme;
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-    if (
-      !document.startViewTransition ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setTheme(newTheme);
-      return;
-    }
-
-    const button = buttonRef.current;
-    const rect = button?.getBoundingClientRect();
-    const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
-    const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
-    const maxRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
-    );
-
-    const transition = document.startViewTransition(() => {
-      setTheme(newTheme);
-    });
-
-    await transition.ready;
-
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 500,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
+    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
   }, [resolvedTheme, setTheme]);
 
   if (!mounted) {
