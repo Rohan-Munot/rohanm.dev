@@ -1,4 +1,27 @@
+import Link from "next/link";
 import Badge from "@/components/ui/badge";
+
+function LinkedText({ text }: { text: string }) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+
+  return parts.map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!match) return part;
+
+    return (
+      <Link
+        key={i}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="custom-dotted-underline font-medium text-foreground"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {match[1]}
+      </Link>
+    );
+  });
+}
 
 const ExperienceBullets = ({
   items,
@@ -18,7 +41,7 @@ const ExperienceBullets = ({
               key={i}
               className="relative pl-3.5 before:absolute before:left-0 before:top-3 before:h-px before:w-2 before:border-t before:border-dashed before:border-muted-foreground"
             >
-              {point}
+              <LinkedText text={point} />
             </li>
           ))}
         </ul>

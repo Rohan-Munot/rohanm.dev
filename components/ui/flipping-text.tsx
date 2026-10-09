@@ -1,20 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-
-interface FlippingTextProps {
-  texts: string[];
-  interval?: number;
-  className?: string;
-}
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 const FlippingText = ({
   texts,
   interval = 3000,
   className,
-}: FlippingTextProps) => {
+}: {
+  texts: string[];
+  interval?: number;
+  className?: string;
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const widest = texts.reduce((a, b) => (a.length >= b.length ? a : b));
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -26,17 +25,17 @@ const FlippingText = ({
 
   return (
     <span className={`relative inline-block ${className}`}>
-      <AnimatePresence mode="wait">
+      <span aria-hidden className="invisible whitespace-nowrap">
+        {widest}
+      </span>
+      <AnimatePresence initial={false}>
         <motion.span
           key={currentIndex}
-          initial={{ opacity: 0, filter: "blur(3px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, filter: "blur(3px)" }}
-          transition={{
-            duration: 0.6,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-          className="inline-block"
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          className="absolute inset-0 whitespace-nowrap"
         >
           {texts[currentIndex]}
         </motion.span>

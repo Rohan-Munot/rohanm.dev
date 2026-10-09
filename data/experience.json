@@ -2,11 +2,24 @@
   {
     "id": "clinikally",
     "company": "Clinikally (YC 22)",
-    "role": "Frontend Engineer",
-    "description": ["Joined a great team as a Frontend Engineer."],
-    "startDate": "2026-05",
+    "role": "Software Developer",
+    "description": [
+      "Built and shipped customer-facing features using Next.js for a high-traffic e-commerce storefront.",
+      "Developed an order management API supporting 10+ filters with optimized queries for fast retrieval across 100K+ orders.",
+      "Built a flexible rule-based collection system supporting nested conditions across products, brands, pricing, and custom attributes.",
+      "Improved backend scalability by optimizing data-intensive queries and workflows handling 100K+ records.",
+      "[24 More](https://24more.in): Built the storefront end-to-end, owning its architecture and implementation."
+    ],
+    "startDate": "2026-02",
     "endDate": null,
     "logo": "clinikally",
+    "tools": [
+      "Next.js",
+      "Docker",
+      "PostgreSQL",
+      "TypeScript",
+      "SQL"
+    ],
     "url": "https://www.clinikally.com/"
   },
   {
@@ -23,7 +36,13 @@
     "startDate": "2026-02",
     "endDate": "2026-05",
     "logo": "clinikally",
-    "tools": ["Next.js", "TypeScript", "Figma", "Jest", "RTL"],
+    "tools": [
+      "Next.js",
+      "TypeScript",
+      "Figma",
+      "Jest",
+      "RTL"
+    ],
     "url": "https://www.clinikally.com/"
   },
   {
@@ -57,7 +76,11 @@
     "startDate": "2025-06",
     "endDate": "2025-11",
     "logo": "novillex",
-    "tools": ["React", "TypeScript", "REST APIs"],
+    "tools": [
+      "React",
+      "TypeScript",
+      "REST APIs"
+    ],
     "url": "https://www.novillex.com/"
   }
 ]
