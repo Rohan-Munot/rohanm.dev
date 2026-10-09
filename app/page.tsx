@@ -19,7 +19,7 @@ const Page = () => {
       <main className="min-h-screen flex justify-center relative mx-2">
         <div className="dashed-border-y flex w-full max-w-3xl flex-col gap-8 font-mono *:last:mb-2 *:last:sm:mb-3">
           <Header />
-          <Section label="Hello">
+          <Section label="Hello" link="https://drive.google.com/file/d/1kA7bgiw2A9gMiU1hHGTdilMz_-T2g2TQ/view?usp=sharing" linkLabel="Resume">
             <About />
           </Section>
           <Section label="Socials">

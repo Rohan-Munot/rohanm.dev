@@ -32,13 +32,6 @@ const getContributionLevel = (count: number): number => {
   return 4;
 };
 
-const formatDay = (dateString: string): string => {
-  return format(
-    parse(dateString, "yyyy-MM-dd", new Date()),
-    "EEE, MMM d, yyyy",
-  );
-};
-
 const GitHubGraph = () => {
   const [data, setData] = useState<ContributionsData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -55,8 +48,8 @@ const GitHubGraph = () => {
     const checkMobile = () => {
       setIsMobile(
         window.matchMedia("(max-width: 768px)").matches ||
-          "ontouchstart" in window ||
-          navigator.maxTouchPoints > 0,
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0,
       );
     };
     checkMobile();
@@ -201,10 +194,10 @@ const GitHubGraph = () => {
             isMobile
               ? undefined
               : (e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    setShowGame(true);
-                  }
+                if (e.key === "Enter" || e.key === " ") {
+                  setShowGame(true);
                 }
+              }
           }
         >
           <div className="overflow-x-auto py-1 no-scrollbar">
