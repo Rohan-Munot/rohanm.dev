@@ -1,11 +1,26 @@
 [
   {
+    "id": "set-env",
+    "name": "set-env",
+    "description": "A CLI that switches named env files into your current terminal so you can hop between local, staging, and other environments.",
+    "url": null,
+    "github": "https://github.com/Rohan-Munot/set-env",
+    "tools": [
+      "Go"
+    ],
+    "featured": true
+  },
+  {
     "id": "metro-route-finder",
     "name": "Metro Route Finder",
     "description": "A transit navigation app for the Delhi Metro that helps users find metro stations and routes between landmarks or from their current location.",
     "url": "https://metro.rohanm.dev/",
     "github": "https://github.com/Rohan-Munot/metro",
-    "tools": ["Next.js", "TypeScript", "Tailwind CSS"],
+    "tools": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
     "featured": true
   },
   {
@@ -14,7 +29,10 @@
     "description": "A Figma plugin that converts icons into clean React and React Native components, making the design-to-code workflow faster and smoother.",
     "url": null,
     "github": "https://github.com/Rohan-Munot/sigen",
-    "tools": ["TypeScript", "Tailwind CSS"],
+    "tools": [
+      "TypeScript",
+      "Tailwind CSS"
+    ],
     "featured": true
   },
   {
@@ -23,7 +41,10 @@
     "description": "A modular component library compatible with Shadcn registry, built using Radix UI and Tailwind CSS.",
     "url": "https://ui.rohanm.dev/",
     "github": null,
-    "tools": ["Radix UI", "Tailwind CSS"],
+    "tools": [
+      "Radix UI",
+      "Tailwind CSS"
+    ],
     "featured": true
   },
   {
@@ -32,7 +53,12 @@
     "description": "Landing page for a financial services company with modern and minimal design.",
     "url": "https://arthatan.vercel.app",
     "github": null,
-    "tools": ["Next.js", "Tailwind CSS", "Shadcn UI", "Motion"],
+    "tools": [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Motion"
+    ],
     "featured": false
   }
 ]
