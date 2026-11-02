@@ -6,8 +6,9 @@ const LINES = [
 ];
 const Footer = () => {
   return (
-    <footer className="dashed-border-x p-4 flex justify-end">
-      <blockquote className="m-0 max-w-prose text-right text-sm leading-relaxed text-muted-foreground whitespace-pre-line">
+    <footer className="dashed-border-x p-4 flex justify-between">
+      <div className="text-sm text-muted-foreground italic">Pink Floyd &lt;3</div>
+      <blockquote className="m-0 max-w-prose text-right text-sm leading-normal text-muted-foreground whitespace-pre-line">
         {LINES.join("\n")}
       </blockquote>
     </footer>
