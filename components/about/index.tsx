@@ -12,15 +12,13 @@ const About = () => {
     <div className="relative flex flex-col gap-4 overflow-hidden pb-4 sm:pr-12">
       <PawArt className="absolute bottom-0 right-0" />
 
-      <div className="flex flex-col gap-3 text-sm leading-relaxed">
+      <div className="flex flex-col gap-1.5 text-sm leading-relaxed">
         <div className="flex gap-2">
           <span className="shrink-0 font-mono text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
-          <span className="text-foreground/90">
-            I&apos;m Rohan — Frontend Engineer with 1.5+ years of experience,
-            who loves building products that are clean and intuitive, with focus
-            on details and design.
+          <span className="text-foreground">
+            I&apos;m <span className="text-[#ffd60a]">rohan</span>, a software engineer, who loves to figure out things, build stuff and get little details right.
           </span>
         </div>
 
@@ -28,22 +26,14 @@ const About = () => {
           <span className="shrink-0 font-mono text-[11px] text-muted-foreground mt-0.5">
             ~
           </span>
-          <span className="text-foreground/75">
-            I&apos;ve worked with freelance clients, had 3 Startup internships.
-            Currently at{" "}
-            <Link
-              href={"https://www.clinikally.com/"}
-              target="_blank"
-              className="text-foreground underline underline-offset-4 font-semibold"
-            >
-              Clinikally
-            </Link>
+          <span className="text-foreground">
+            A year and a half of building things, with a lot more ahead.
           </span>
         </div>
 
         <div className="flex flex-wrap gap-2 gap-y-0">
           <span className="text-[11px] text-muted-foreground mt-0.5">~</span>
-          <span className="text-foreground/75 text-balance w-max">
+          <span className="text-foreground text-balance w-max">
             Open to full-time / freelance.
           </span>
           <button
